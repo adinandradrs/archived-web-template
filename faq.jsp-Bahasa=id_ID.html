@@ -1,0 +1,359 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="keyword" content="pasar, komoditas, fisik, pasar komoditas, pasar komoditas fisik, lelang, auction, pasar komoditas fisik,
+      lelang komoditi, comodity market" />
+<meta name="description" content="Pasar Komoditas Fisik Indonesia" />
+<link REL="SHORTCUT ICON" HREF="images/favicon.ico">
+<title>iPasar </title>
+
+<script type="text/javascript">
+    var mnAbout = 'Tentang Kami';
+    var mnFAQ = 'Pertanyaan';
+    var mnUserGuide = 'Panduan Pengguna';
+    var mnTypeKomoditi = 'Tipe Komoditi';
+    var mnGdSerah = 'Gudang Serah';
+    var mnHisPrice = 'Historical Price / Chart';
+
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.marquee.js"></script>
+<script type="text/javascript" src="js/dwrengine.js"></script>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script type="text/javascript">
+    var jq = jQuery.noConflict();
+</script>
+<script type="text/javascript" src="js/dropdownmenu/menucontents.js"></script>
+<script type="text/javascript" src="js/dropdownmenu/anylinkmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="css/anylinkmenu.css" />
+<link rel="stylesheet" type="text/css" href="css/simpletree.css" />
+<link href="css/style-cilantro.css" rel="stylesheet" type="text/css" />
+
+<noscript>
+<meta http-equiv="refresh" content="1; URL='nojscript.jsp.html'">
+</noscript>
+
+<script type="text/javascript">
+	anylinkmenu.init("menuanchorclass");
+</script>
+<script type="text/javascript" src="js/treeview/simpletreemenu.js"></script>
+<script>
+   var serverTime = new Date('Sun Apr 19 2015 00:29:54');
+
+     //var serverTime ;
+    function init()
+    {
+        showServerTime();
+        //dwr.engine.setActiveReverseAjax(true);
+    }
+
+
+    function setInnerHtml(idNya, data) {
+        var getId = document.getElementById(idNya);
+        if (getId != null) {
+            getId.innerHTML = data;
+        }
+    }
+
+
+    function setTime(result)
+    {
+        serverTime = new Date(result);
+        //showServerTime();
+    }
+
+    function showServerTime() {
+        if(!document.all && !document.getElementById) return;
+        var dN =new Array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
+        mN=new Array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+        var hours = serverTime.getHours();
+        var minutes = serverTime.getMinutes();
+        var seconds = serverTime.getSeconds();
+        var day=dN[serverTime.getDay()];
+        var month=mN[serverTime.getMonth()];
+        var dat=serverTime.getDate();
+        var year=serverTime.getFullYear();
+
+        serverTime.setSeconds(seconds+1);
+
+        if(hours<=9) {hours = "0" + hours;}
+        if(minutes<=9) {minutes = "0" + minutes;}
+        if(seconds<=9) {seconds = "0" + seconds;}
+
+        ShowTime = day + "," + "&nbsp;" +  month + "&nbsp;" + dat + "," +"&nbsp;" + year + "&nbsp;" +  " - " +hours + ":" + minutes + ":" + seconds +  "&nbsp;" + "GMT+7";
+
+        if(document.getElementById) {
+            document.getElementById("STime").innerHTML = ShowTime;
+        }
+        else if(document.all) {
+            STime.innerHTML = ShowTime;
+        }
+        setTimeout("showServerTime()", 1000);
+    }
+    <!--
+    jq(function () {
+        // basic version is: $('div.demo marquee').marquee() - but we're doing some sexy extras
+        
+        jq('#textmarque marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });
+        
+        jq('#subcontent marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });        
+    });
+    //-->    
+</script>
+<script language="JavaScript" src="js/timer.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/date.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/jquery.datePicker.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/datePicker.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/demo.css">
+</head>
+<body onload="init();">
+<div id="wrapper">
+  <div id="header"><img src="images/header1.jpg" alt="iPasar" width="257" height="94" />
+    <div id="language">
+      <p><span id="STime">Selamat datang</span><br />
+        Pilih Bahasa : <a href="faq.jsp-Bahasa=id_ID.html">Indonesia</a> | <a href="faq.jsp-Bahasa=en_US.html">Inggris</a></p>
+<!--        <form name="frmCari" action="" method="post">
+        <table cellpadding="0" cellspacing="2" border="0">
+          <tr>
+            <td width="120">&nbsp;</td>
+            <td><input name="keyword" type="text" class="txt" value="Pencarian" /></td>
+            <td><input type="image" src="images/btnsearch.jpg" alt="Pencarian" /></td>
+          </tr>
+        </table>
+      </form> -->
+    </div>
+    <img src="images/header2.jpg" alt="Komoditi Mandiri" width="311" height="94" /><br class="clear" />
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.html" title="Depan">Depan</a></li>
+      <li><a href="faq.jsp-Bahasa=id_ID.html#" title="Lelang Beli" class="menuanchorclass" rel="anylinkmenu2">Inisiaisi</a></li>
+      <li><a href="faq.jsp-Bahasa=id_ID.html#" title="???MenuCatalogAuctionSell???" class="menuanchorclass" rel="anylinkmenu6">KATALOG JUAL</a></li>
+      <li><a href="faq.jsp-Bahasa=id_ID.html#" title="???MenuCatalogAuctionBuy???" class="menuanchorclass" rel="anylinkmenu7">KATALOG BELI</a></li>
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a></li>
+      <li><a href="newsArchieve.jsp.html" title="Data" class="menuanchorclass" rel="anylinkmenu4">Data</a></li>
+      <li><a href="faq.jsp-Bahasa=id_ID.html#" title="Masuk" class="menuanchorclass" rel="anylinkmenu5">Masuk</a></li>
+      <li><a href="faq.jsp-Bahasa=id_ID.html#" class="menuanchorclass" rel="anylinkmenu3" title="Panduan" class="menuanchorclass" rel="anylinkmenu3">Panduan</a></li>
+    </ul>
+  </div>
+  <div id="textmarque">
+    <marquee behavior="scroll" direction="left" scrollamount="2">
+    
+                <a class="up">JAGPILJI&nbsp;3,350&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;350</a>&nbsp;&nbsp;
+                
+                <a class="up">GUMROSINPPHT3&nbsp;2,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;305</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSN&nbsp;3,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;150</a>&nbsp;&nbsp;
+                
+                <a class="down">JAGPILJB&nbsp;3,350&nbsp;<img src="images/down.gif" alt="Down" width="17" height="11" />&nbsp;(150)</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSU&nbsp;3,500&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;50</a>&nbsp;&nbsp;
+                
+                <a class="stabil">KEDELAIAJB&nbsp;9,000&nbsp;<img src="images/stabil.gif" alt="Down" width="17" height="11" />&nbsp;0</a>&nbsp;&nbsp;
+                
+    </marquee>
+  </div>
+  <div id="subcontent">
+    <marquee behavior="scroll" direction="left" scrollamount="1">
+    iPasar - Mitra Kesejahteraan dan Kemakmuran Bangsa&nbsp;&nbsp;
+    
+                | <a href="news.jsp-news_id=81.html">TRIBUNNEWS.COM : Pemerintahan Jokowi Targetkan Swasembada Padi Tahun 2015, Jagung 2016, dan Kedelai 2017</a>
+                
+                | <a href="news.jsp-news_id=79.html">Republika :  Gorontalo ekspor jagung ke Filipina</a>
+                
+                | <a href="news.jsp-news_id=80.html">Cahayareformasi : Jajaki Naikkan Harga Jagung, Presiden Jokowi Minta Petani Semangat Hadapi Kompetisi</a>
+                
+                | <a href="news.jsp-news_id=77.html">BLOG : INFORMASI TRANSAKSI PT. iPASAR INDONESIA</a>
+                
+                | <a href="news.jsp-news_id=70.html">IPSR : Sepanjang Tahun 2012 Nilai Transaksi Lelang Kayu di iPASAR Mencapai Rp. 26 Milyar</a>
+                
+                | <a href="news.jsp-news_id=75.html">TMPO : Produksi Terbatas, Harga Kopi Dunia Justru Turun  </a>
+                
+                | <a href="news.jsp-news_id=74.html">KMPS : Pemasaran Rumput Laut Diperluas</a>
+                
+                | <a href="news.jsp-news_id=22.html">IPSR : Lelang Produk Petani Lewat Internet di iPASAR  </a>
+                
+                | <a href="news.jsp-news_id=59.html">IPSR : Harga Acuan Jagung Diperlukan</a>
+                
+                | <a href="news.jsp-news_id=62.html">KKPG : iPasar Berhasil Fasilitasi Transaksi Kakao</a>
+                
+    </marquee>
+  </div>
+  <div id="content">
+    <div id="leftbar">
+      <h2 class="title">Kategori Barang</h2>
+      <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td><ul id="treemenu1" class="treeview">
+                <li><a href="faq.jsp-Bahasa=id_ID.html#">Komoditi Pertanian</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=8">Jagung Pipilan</a></li>
+                        <li><a href="catalogs.jsp?catId=17">Kedelai</a></li>
+                        <li><a href="catalogs.jsp?catId=18">Benih Kedelai</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.jsp-Bahasa=id_ID.html#">Komoditi Kehutanan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=10">Kayu</a></li>
+                        <li><a href="catalogs.jsp?catId=13">Gum Rosin</a></li>
+                        <li><a href="catalogs.jsp?catId=14">Turpentine</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.jsp-Bahasa=id_ID.html#">Komoditi Kelautan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=11">Cottonii</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.jsp-Bahasa=id_ID.html#">Komoditi Perkebunan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=12">Kopi Arabika</a></li>
+                        <li><a href="catalogs.jsp?catId=15">Gula Kristal Putih</a></li>
+			   <li><a href="catalogs.jsp?catId=16">Karet Bokor</a></li>
+                    </ul>
+                </li>                
+            </ul>
+            <script type="text/javascript">
+		ddtreemenu.createTree("treemenu1", true, 5)
+            </script>
+            <br />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+<div id="isi">
+      <h2 class="title">Pertanyaan</h2>
+<table class="tablebidding">          
+
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Apa pengertian pasar komoditas fisik yang diselenggarakan iPASAR?</th></tr>
+        <tr><td>Pasar komoditas fisik yang diselenggarakan oleh iPASAR menggunakan mekanisme lelang secara elektronik atau iPASAR-Electronic Trading System (iPASAR-ETS). Transaksi komoditi jual dan beli yang terdaftar dan terjadi akan tercatat di iPASAR-ETS.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Apa dasar hukum dari Pasar Komoditas Fisik yang diselenggarakan iPASAR?</th></tr>
+        <tr><td>Undang-Undang Nomor: 9 Tahun 2006, Tentang Sistem Resi Gudang, Undang-Undang Nomor: 11 Tahun 2008, Tentang Transaksi Elektronik, Keputusan Menteri Perindustrian dan Perdagangan Republik Indonesian Nomor: 650/MPP/Kep/10/2004, Tentang Ketentuan Penyelenggaraan Pasar Lelang Dengan Penyerahan Kemudian (Forward) Komoditi Agro.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Siapa saja yang dapat melakukan transaksi jual dan beli di pasar komoditas fisik iPASAR?</th></tr>
+        <tr><td>Yang dapat melakukan transaksi jual dan beli di pasar komoditas fisik iPASAR adalah mereka yang telah tercatat sebagai Anggota Penjual dan Pembeli serta telah memberikan atau menyerahkan Penjaminan Risiko Transaksi ke rekening Penjaminan dan tidak dalam masa skorsing.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Apa saja persaratan bagi Anggota Pembeli dan Anggota Penjual?</th></tr>
+        <tr><td><ol><li>Perorangan Warga Negara Indonesia :	<ul><li>Mengisi Formulir Pendaftaran Keanggotaan,</li><li>Fotocopy KTP/Paspor, </li><li>2 lembar Pasfoto berwarna ukuran 4x6,</li><li>Fotocopy Nomor Pokok Wajib Pajak (NPWP),</li><li>Fotocopy Rekening Bank (3 bulan terakhir),</li><li>Referensi Bank,</li><li>Membayar Iuran Keanggotaan,</li><li>Menempatkan Jaminan Risiko Transaksi.</li></ul>*) 	Perorangan Warga Negara Asing dapat bertransaksi di iPasar melalui Perantara&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perdagangan yang ada.    </li><li>Badan Usaha Nasional dan Koperasi :    <ul><li>Mengisi Formulir Pendaftaran Keanggotaan,</li><li>Fotocopy Akta Pendirian dan Perubahan Terakhir berikut persetujuan dari Departemen Hukum dan HAM R.I.,</li><li>Surat Ijin Usaha Perdagangan (SIUP),</li><li>Tanda Daftar Perusahaan (TDP),</li><li>Fotocopy Nomor Pokok Wajib Pajak (NPWP),</li><li>Fotocopy Ijin Domisili Usaha,</li><li>Fotocopy KTP/Paspor dari Pengurus / Direksi atau Kuasanya,</li><li>2 lembar Pasfoto ukuran 4x6 dari Pengurus / Direksi atau Kuasanya,</li><li>Fotocopy Rekening Koran Bank (3 bulan terakhir),</li><li>Referensi Bank,</li><li>Membayar Iuran Keanggotaan,</li><li>Menempatkan Jaminan Risiko Transaksi.&nbsp;	</li></ul>	</li></ol>*)	Badan Usaha Asing dapat bertransaksi di iPasar melalui Perantara Perdagangan yang ada.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Komoditi apa sajakah yang diperdagangkan di iPasar?</th></tr>
+        <tr><td>Ada 5(lima) ketagori komoditi yang diperdagangkan yaitu <b>Komoditi Pertanian</b>, <b>Komoditi Perkebunan</b>,<b> Komoditi Kehutanan</b>, <b>Komoditi Kelautan</b> dan <b>Komoditi Pertambangan</b>. Komoditi Pertanian terdiri dari sub-kategori antara lain yaitu Jagung Pipilan, Gaplek, Kacang Kedelai, dan Kacang Tanah. Kategori Perkebunan terdiri dari sub-kategori antara lain yaitu Biji Kopi, Biji Coklat, Biji Mete, Biji Pala, Karet, Gambir, Pinang, Lada, Cengkeh, dan Kayu Manis. Komoditi Kehutanan terdiri dari sub-kategori antara lain yaitu Kayu Jati Bundar. Komoditi Kelautan terdiri dari sub-kategori yaitu Rumput Laut. Kategori Pertambangan terdiri dari sub-kategori yaitu Logam Mulia Emas (LM Gold).</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Berapa jumlah tonase minimum yang dapat ditransaksikan di iPasar? </th></tr>
+        <tr><td>Satuan transaksi adalah Kilogram, minimum volume bervariasi pada setiap komoditinya mulai dari 1.000 Kg (1 Ton) sampai dengan 5.000 Kg (5 Ton) kecuali untuk komoditi Kayu Jati Bundar dan Logam Mulia Emas (LM Gold) dengan ketentuan penawaran jual dan tawaran beli berlaku kelipatan dari minimum volume.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Apa mutu komoditi yang diperdagangkan di Pasar Fisik Komoditi iPasar?</th></tr>
+        <tr><td>Mutu komoditi yang diperdagangkan di iPASAR mengacu kepada spesifikasi yang terdapat dalam Standar Nasional Indonesia (SNI). Pengujian mutu komoditi dilakukan oleh Lembaga Penilai Kesesuaian Mutu yang tersertifikasi.<br></td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Bagaimana mekanisme transaksi dalam Pasar Komoditas Fisik iPASAR?</th></tr>
+        <tr><td>iPASAR menampilkan informasi mengenai Tipe Paket Lelang yang diperdagangkan melalui papan perdagangan pada tampilan iPASAR-ETS pada setiap Hari Lelang. Perdagangan Paket Lelang diselenggarakan melalui iPASAR-ETS berdasarkan proses tawar menawar lelang selama jam lelang.&nbsp; Pembukaan Paket Lelang dan perdagangan Paket Lelang terjadi pada saat penawaran beli bertemu dengan penawaran jual pada Harga Penawaran yang sama dengan <i>Reserve Price</i> (Harga Harapan) atau lebih tinggi dengan memperhatikan prinsip prioritas harga dan kuantitas. iPASAR-ETS menjumpakan 1(satu) penawaran beli atau penawaran jual baik secara keseluruhan maupun sebagian kuantitas, dengan 1(satu) atau lebih penawaran beli atau penawaran jual lainnya baik secara keseluruhan maupun sebagian kuantitas. Dalam hal terdapat sisa pada akhir Jam Lelang Hari Lelang dari suatu penawaran beli dan atau penawaran jual dalam proses penjumpaan penawaran maka penawaran beli dan atau penawaran jual yang tidak terjadi transaksi menjadi tidak berlaku lagi. Sebelum Jam Perdagangan dimulai, 1(satu) menit sebelumnya, Inisiator Jual atau Inisiator Beli dapat mengubah atau rnembatalkan penawaran beli dan atau penawaran jual yang sudah dimasukkan ke iPASAR-ETS sebelumnya. <br><br>Nilai Jaminan Risiko Transaksi untuk Anggota yang melakukan Inisiasi Penjualan sebesar minimum 1(satu)% dan/atau maksumum 10(sepuluh)% x Reserve Price Jual x Kuantitas yang dijual dan untuk Anggota yang melakukan pembelian sebesar 1(satu)% dan/atau maksumum 10(sepuluh)% x Harga Penawaran Beli x Kuantitas yang tawar beli. <br><br>Bentuk Jaminan Risiko Transaksi dapat berupa: dana tunai, deposito, jaminan bank, Surety Bond dan Resi Gudang. Nilai Paket Lelang merupakan nilai uang dari [Harga Lelang x kuantitas] saat dibuka. Nilai Transaksi iPasar menunjukkan besarnya hak dan kewajiban masing-masing pihak baik pihak jual maupun pihak beli yang ditentukan berdasarkan jumlah [(Deal Price x Kuantitas) + Biaya Transaksi], tidak termasuk biaya gudang biaya transportasi, asuransi dan lain-lain.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Bagaimana penyelesaian transaksi di iPASAR?</th></tr>
+        <tr><td>Anggota Penjual dapat memilih lokasi Gudang-Serah yang dikelola oleh Pengelola Gudang terakreditasi {salah-satunya PT. Bhanda Ghara Reksa (Persero)} dan melakukan pengiriman komoditi ke lokasi Gudang-Serah untuk diperiksa oleh <i>Surveyor Independent</i> terhadap kualitas dan kuantitas komoditi selambatnya 2(dua) hari kerja untuk perdagangan SPOT dan/atau 5(lima) hari kerja sebelum <i>Delivery Date</i> pada perdagangan FORWARD. Selanjutnya, Pengelola Gudang menerbitkan ?Resi Gudang? untuk diberikan ke Anggota Penjual beserta lampiran hasil pemeriksaan komoditi kemudian Anggota Penjual menyerahkan ke Lembaga Penjaminan dan Penyelesaian Transaksi guna menerima pembayaran.<br><br>Anggota Pembeli dapat memanfaatkan Gudang-Serah sebagai tempat penyimpanan sementara atau penyimpanan dengan skema Sistem Resi Gudang (SRG) atau Collateral Management Agreement (CMA). Anggota Pembeli wajib melunasi pembayaran atas transaksi yang dilakukan selambatnya 2(dua) hari kerja untuk SPOT dan/atau 5(lima) hari kerja untuk FORWARD sebelum <i>Delivery Date</i> ke Lembaga Penjaminan dan Penyelesaian Transaksi. Anggota Pembeli akan menerima ?Resi Gudang? beserta lampiran hasil pemeriksaan komoditi dari Lembaga Penjaminan dan Penyelesaian Transaksi sebagai bukti kepemilikan atas komoditi tersebut.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Bilamana pihak pembeli dikatakan terlambat bayar ?</th></tr>
+        <tr><td>Apabila pihak pembeli tidak melakukan pembayaran sampai waktu yang ditentukan dalam Peraturan Tata-Tertib Perdagangan dan Penjaminan maka pihak pembeli dianggap terlambat bayar. Pihak yang terlambat bayar tersebut akan diwajibkan membayar <i>overdue interest</i> dari hari terlambat hingga terjadi pembayaran berdasarkan bunga bank yang berlaku di Kurs Tengah Bank Indonesia. Selama <i>overdue interest</i> diberlakukan maka untuk sementara waktu pembeli yang bersangkutan tidak dapat mengikuti lelang.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Bilamana pihak pembeli dinyatakan Gagal-Bayar?</th></tr>
+        <tr><td>Apabila pihak Anggota Pembeli tidak melakukan pembayaran sampai dengan batas waktu yang diberikan&nbsp; maka Anggota Pembeli dianggap Gagal-Bayar dan tidak berhak atas barang lelang yang dimenangkannya.</td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Bilamana penyelesaian Risiko Gagal-Serah, Gagal-Bayar, Gagal-Kuantitas dan Kualitas?</th></tr>
+        <tr><td><strong>Gagal-Serah</strong><br>Anggota Penjual kurang menyerahkan kuantitas komoditi sampai dengan melebihi 5(lima)% dari Nilai Paket Lelang atau tidak menyerahkan komoditi ke lokasi Gudang-Serah yang diperjanjikan dalam batas-waktu yang telah disepakati, atau maksimal pada tanggal jatuh tempo Penyelesaian Transaksi (Delivery Date) akan dinyatakan status Gagal-Serah. Lembaga Kliring dan Penyelesasian Transaksi menetapkan hak dan kewajiban akhir terhadap Penyelesaian Transaksi Gagal-Serah dilakukan dalam&nbsp; Papan Perdagangan CASH.<p><strong>Gagal-Bayar</strong><br>Anggota Pembeli kurang melunasi pembayaran sampai dengan melebihi 5(lima)% dari Nilai Paket Lelang atau tidak melunasi pembayaran ke Lembaga Kliring dan Penjaminan Penyelesaian Transaksi dalam batas-waktu yang telah disepakati, atau maksimal pada tanggal jatuh tempo Penyelesaian Transaksi (Delivery Date) akan dinyatakan status Gagal-Bayar. Lembaga Kliring dan Penyelesasian Transaksi menetapkan hak dannbsp;kewajiban akhir terhadap Penyelesaian Transaksi Gagal-Bayar dilakukannbsp;dalam&nbsp; Papan Perdagangan CASH. <br></p><p><strong>Gagal Kualitas dan Kuantitas</strong><br>Anggota Penjual tidak menyerahkan komoditi sesuai dengan kualitas komoditi yang di deklarasi atau di janjikan pada saat pelelangan ke lokasi Gudang-Serah. Ketidak-sesuaian kualitas dan/atau kuantitas tersebut dinyatakan oleh hasil pemeriksaan komoditi oleh <i>Surveyor Independent</i>. Apabila kualitas atau kuantitas komoditi yang dikirim kurang atau turun mutu maka diberlakukan Discount. Sebaliknya, apabila kualitas komoditi yang dikirim memiliki kualitas lebih baik maka diberikan PREMIUM. </p><strong></strong></td></tr>
+      
+        
+        <tr><th>Pertanyaan&nbsp;:&nbsp;  Bagaimana mekanisme penyelesaian perselisihan di Pasar Fisik Komoditi iPasar?</th></tr>
+        <tr><td>Apabila terjadi suatu perselisihan antar-Anggota peserta lelang sehubungan dengan transaksi lelang di iPASAR, maka peserta lelang yang menuntut wajib terlebih dahulu menyelesaikan secara musyawarah untuk mencapai mufakat. Apabila penyelesaian secara musyawarah untuk mufakat tidak tercapai, Anggota peserta lelang yang menuntut dapat mengajukan permohonan penyelesaian perselisihan melalui Komite Perdagangan kepada iPASAR dan Lembaga Kliring dan Penyelesasian Transaksi dengan membuat penjelasan rinci dan bukti mengenai kasus yang terjadi.</td></tr>
+      
+                </table>
+</div>
+
+
+    <div id="rightbar">
+      <h2 class="title">Download</h2>
+      <ul>
+        <li><a href="upload/docs/Formulir Pendaftaran Keanggotaan iPASAR (Edwin).pdf">Keanggotaan iPasar</a></li>        
+        <li><a href="upload/docs/Trading Fact Kontrak JAGUNG Feb 2015 Sona.pdf">Trading Fact Kontrak Jagung</a></li>
+        <li><a href="upload/docs/Trading Fact Kontrak KOPI SONA.pdf">Trading Fact Kontrak Kopi</a></li>
+	<li><a href="upload/docs/TRADING FACT GULA JAN 2014.pdf">Trading Fact Kontrak Gula</a></li>
+	<li><a href="upload/docs/TRADING FACT TERPENTIN JAN 2014.pdf">Trading Fact Kontrak Terpentin</a></li>	
+        <li><a href="upload/docs/Trading Fact Kontrak GONDORUKEM Feb 12.pdf">Trading Fact Kontrak Gondorukem</a></li>
+        <li><a href="upload/docs/TRADING FACT KAYU JATI JAN 2014.pdf">Trading Fact Kayu Jati</a></li>
+	<li><a href="upload/docs/TRADING FACT KEDELAI JAN 2014.pdf">Trading Fact Kayu Kedelai</a></li>
+	<li><a href="upload/docs/Trading Fact Kontrak Seaweed 2012.pdf">Trading Fact Rumput Laut</a></li>
+	<li><a href="upload/docs/Brosur iPasar_Update Feb 2015.pdf">Brosur iPasar</a></li>
+        <!--<li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 2.pdf">Spek. Kayu Jati Bundar ex-PPHT 2</a></li>        
+        <li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 3.pdf">Spek. Kayu Jati Bundar ex-PPHT 3</a></li>-->
+      </ul><br />
+      <h2 class="title">Pemberitahuan</h2>
+      <ul>
+
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="footer">
+    <ul>
+      <li><a href="http://www.ipasar.co.id/home.jsp" title="Depan">Depan</a>|</li>
+
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a>|</li>
+
+      <li><a href="deliveryPoint.jsp.html" title="Gudang Serah">Gudang Serah</a>|</li>
+      <li><a href="historicalPrice.jsp.html" title="Historical Price / Chart">Historical Price / Chart</a>|</li>
+      <li><a href="faq.jsp.html" title="Pertanyaan">Pertanyaan</a>|</li>
+      <li><a href="about.jsp.html" title="Tentang Kami">Tentang Kami</a>|</li>
+      <li><a href="help.jsp.html" title="Panduan Pengguna">Panduan Pengguna</a></li>
+    </ul>
+    <br />
+    Copyright &copy; 2009 iPasar. <span>All Rights Reserved.</span> </div>
+</div>
+</body>
+</html>

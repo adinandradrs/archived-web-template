@@ -1,0 +1,495 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="keyword" content="pasar, komoditas, fisik, pasar komoditas, pasar komoditas fisik, lelang, auction, pasar komoditas fisik,
+      lelang komoditi, comodity market" />
+<meta name="description" content="Pasar Komoditas Fisik Indonesia" />
+<link REL="SHORTCUT ICON" HREF="images/favicon.ico">
+<title>iPasar </title>
+
+<script type="text/javascript">
+    var mnAbout = 'Tentang Kami';
+    var mnFAQ = 'Pertanyaan';
+    var mnUserGuide = 'Panduan Pengguna';
+    var mnTypeKomoditi = 'Tipe Komoditi';
+    var mnGdSerah = 'Gudang Serah';
+    var mnHisPrice = 'Historical Price / Chart';
+
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.marquee.js"></script>
+<script type="text/javascript" src="js/dwrengine.js"></script>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script type="text/javascript">
+    var jq = jQuery.noConflict();
+</script>
+<script type="text/javascript" src="js/dropdownmenu/menucontents.js"></script>
+<script type="text/javascript" src="js/dropdownmenu/anylinkmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="css/anylinkmenu.css" />
+<link rel="stylesheet" type="text/css" href="css/simpletree.css" />
+<link href="css/style-cilantro.css" rel="stylesheet" type="text/css" />
+
+<noscript>
+<meta http-equiv="refresh" content="1; URL='nojscript.jsp.html'">
+</noscript>
+
+<script type="text/javascript" src="js/treeview/simpletreemenu.js"></script>
+<script>
+    anylinkmenu.init("menuanchorclass");
+    var serverTime = new Date('Sun Apr 19 2015 00:29:02');
+    function init() {
+        showServerTime();
+        dwr.engine.setActiveReverseAjax(true);
+    }
+    function setInnerHtml(idNya, data) {
+        var getId = document.getElementById(idNya);
+        if (getId != null) {
+            getId.innerHTML = data;
+        }
+    }
+
+    function setTime(result) {
+        serverTime = new Date(result);
+    }
+
+    function showServerTime() {
+        if(!document.all && !document.getElementById) return;
+        var dN =new Array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
+        mN=new Array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+        var hours = serverTime.getHours();
+        var minutes = serverTime.getMinutes();
+        var seconds = serverTime.getSeconds();
+        var day=dN[serverTime.getDay()];
+        var month=mN[serverTime.getMonth()];
+        var dat=serverTime.getDate();
+        var year=serverTime.getFullYear();
+
+        serverTime.setSeconds(seconds+1);
+
+        if(hours<=9) {hours = "0" + hours;}
+        if(minutes<=9) {minutes = "0" + minutes;}
+        if(seconds<=9) {seconds = "0" + seconds;}
+
+        ShowTime = day + "," + "&nbsp;" +  month + "&nbsp;" + dat + "," +"&nbsp;" + year + "&nbsp;" +  " - " +hours + ":" + minutes + ":" + seconds +  "&nbsp;" + "GMT+7";
+
+        if(document.getElementById) {
+            document.getElementById("STime").innerHTML = ShowTime;
+        }
+        else if(document.all) {
+            STime.innerHTML = ShowTime;
+        }
+        setTimeout("showServerTime()", 1000);
+    }
+    <!--
+    jq(function () {
+        // basic version is: $('div.demo marquee').marquee() - but we're doing some sexy extras
+        
+        jq('#textmarque marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });
+        
+        jq('#subcontent marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });        
+    });
+    //-->    
+</script>
+<script language="JavaScript" src="js/timer.js"></script>
+</head>
+<body onload="init();">
+<div id="wrapper">
+  <div id="header"><img src="images/header1.jpg" alt="iPasar" width="257" height="94" />
+    <div id="language">
+      <p><span id="STime">Selamat datang</span><br />
+        Pilih Bahasa : <a href="index-Bahasa=id_ID.html">Indonesia</a> | <a href="index-Bahasa=en_US.html">Inggris</a></p>
+      <!--<form name="frmCari" action="" method="post">
+        <table cellpadding="0" cellspacing="2" border="0">
+          <tr>
+            <td width="120">&nbsp;</td>
+            <td><input name="keyword" type="text" class="txt" value="Pencarian" /></td>
+            <td><input type="image" src="images/btnsearch.jpg" alt="Pencarian" /></td>
+          </tr>
+        </table>
+      </form>-->
+    </div>
+    <img src="images/header2.jpg" alt="Komoditi Mandiri" width="311" height="94" /><br class="clear" />
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.html" title="Depan">Depan</a></li>
+      <li><a href="index-Bahasa=id_ID.html#" title="Lelang Beli" class="menuanchorclass" rel="anylinkmenu2">Inisiaisi</a></li>
+      <li><a href="index-Bahasa=id_ID.html#" title="???MenuCatalogAuctionSell???" class="menuanchorclass" rel="anylinkmenu6">KATALOG JUAL</a></li>
+      <li><a href="index-Bahasa=id_ID.html#" title="???MenuCatalogAuctionBuy???" class="menuanchorclass" rel="anylinkmenu7">KATALOG BELI</a></li>
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a></li>
+      <li><a href="newsArchieve.jsp.html" title="Data" class="menuanchorclass" rel="anylinkmenu4">Data</a></li>
+      <li><a href="index-Bahasa=id_ID.html#" title="Masuk" class="menuanchorclass" rel="anylinkmenu5">Masuk</a></li>
+      <li><a href="index-Bahasa=id_ID.html#" class="menuanchorclass" rel="anylinkmenu3" title="Panduan" class="menuanchorclass" rel="anylinkmenu3">Panduan</a></li>
+    </ul>
+  </div>
+  <div id="textmarque">
+    <marquee behavior="scroll" direction="left" scrollamount="2">
+    
+                <a class="up">JAGPILJI&nbsp;3,350&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;350</a>&nbsp;&nbsp;
+                
+                <a class="up">GUMROSINPPHT3&nbsp;2,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;305</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSN&nbsp;3,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;150</a>&nbsp;&nbsp;
+                
+                <a class="down">JAGPILJB&nbsp;3,350&nbsp;<img src="images/down.gif" alt="Down" width="17" height="11" />&nbsp;(150)</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSU&nbsp;3,500&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;50</a>&nbsp;&nbsp;
+                
+                <a class="stabil">KEDELAIAJB&nbsp;9,000&nbsp;<img src="images/stabil.gif" alt="Down" width="17" height="11" />&nbsp;0</a>&nbsp;&nbsp;
+                
+    </marquee>
+  </div>
+  <div id="subcontent">
+    <marquee behavior="scroll" direction="left" scrollamount="1">
+    iPasar - Mitra Kesejahteraan dan Kemakmuran Bangsa&nbsp;&nbsp;
+    
+                <a href="news.jsp-news_id=81.html">TRIBUNNEWS.COM : Pemerintahan Jokowi Targetkan Swasembada Padi Tahun 2015, Jagung 2016, dan Kedelai 2017</a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=79.html">Republika :  Gorontalo ekspor jagung ke Filipina</a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=80.html">Cahayareformasi : Jajaki Naikkan Harga Jagung, Presiden Jokowi Minta Petani Semangat Hadapi Kompetisi</a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=77.html">BLOG : INFORMASI TRANSAKSI PT. iPASAR INDONESIA</a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=70.html">IPSR : Sepanjang Tahun 2012 Nilai Transaksi Lelang Kayu di iPASAR Mencapai Rp. 26 Milyar</a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=75.html">TMPO : Produksi Terbatas, Harga Kopi Dunia Justru Turun  </a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=74.html">KMPS : Pemasaran Rumput Laut Diperluas</a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=22.html">IPSR : Lelang Produk Petani Lewat Internet di iPASAR  </a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=59.html">IPSR : Harga Acuan Jagung Diperlukan</a>&nbsp;&nbsp;
+                
+                <a href="news.jsp-news_id=62.html">KKPG : iPasar Berhasil Fasilitasi Transaksi Kakao</a>&nbsp;&nbsp;
+                
+    </marquee>
+  </div>  
+  <div id="content">
+    <div id="leftbar">
+      <h2 class="title">Kategori Barang</h2>
+      <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td><ul id="treemenu1" class="treeview">
+                <li><a href="index-Bahasa=id_ID.html#">Komoditi Pertanian</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=8">Jagung Pipilan</a></li>
+                        <li><a href="catalogs.jsp?catId=17">Kedelai</a></li>
+                        <li><a href="catalogs.jsp?catId=18">Benih Kedelai</a></li>
+                    </ul>
+                </li>
+                <li><a href="index-Bahasa=id_ID.html#">Komoditi Kehutanan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=10">Kayu</a></li>
+                        <li><a href="catalogs.jsp?catId=13">Gum Rosin</a></li>
+                        <li><a href="catalogs.jsp?catId=14">Turpentine</a></li>
+                    </ul>
+                </li>
+                <li><a href="index-Bahasa=id_ID.html#">Komoditi Kelautan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=11">Cottonii</a></li>
+                    </ul>
+                </li>
+                <li><a href="index-Bahasa=id_ID.html#">Komoditi Perkebunan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=12">Kopi Arabika</a></li>
+                        <li><a href="catalogs.jsp?catId=15">Gula Kristal Putih</a></li>
+			   <li><a href="catalogs.jsp?catId=16">Karet Bokor</a></li>
+                    </ul>
+                </li>                
+            </ul>
+            <script type="text/javascript">
+		ddtreemenu.createTree("treemenu1", true, 5)
+            </script>
+            <br />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div id="isi">
+        <script>
+            function updatePrice(data) {
+                var dataNya = data.split("|");
+                var exchange = data[0];
+                var tanggalkirim = data[1];
+                var waktukirim = data[2];
+                var seq = data[3];
+                var messageType = data[4];
+                if (dataNya[4] == "0") {
+                    if (dataNya[5] == "3") {
+                        //open session
+                        if(document.getElementById) {
+                            document.getElementById("STime").innerHTML = "Open session ";
+                        }
+                        var tanggal = dataNya[1];
+                        var waktu = dataNya[2];
+
+                        var tahun = tanggal.substring(0,4);
+                        var bulan = tanggal.substring(4,6) - 1;
+                        var hari  = tanggal.substring(6);
+
+                        var jam = waktu.substring(0,2);
+                        var men = waktu.substring(2,4);
+                        var det = waktu.substring(4);
+
+                        var sessiSekarang = new Date(tahun, bulan, hari, jam, men, det);
+
+                        var calc = new Date();
+                        jq(".notactive").each(function() {
+                            calc.setTime(jq(this).attr('tanggal'));
+                            if (sessiSekarang >= calc) {
+                                jq(this).removeClass();
+                            }
+                        });
+                    } else if (dataNya[5] == "4") {
+                        //end session
+                        var arrTime = new Array();
+                        var counter = 0;
+                        for (i=10000;i<=30000;i+1000){
+                            arrTime[counter] = i;
+                            //alert(arrTime[counter]);
+                            counter++;
+                        }
+                        setTimeout("location.reload(true);",arrTime[Math.floor(arrTime.length*Math.random())]);
+
+                    if(document.getElementById) {
+                            document.getElementById("STime").innerHTML = "End Session ";
+                        }
+                    } else if (dataNya[5] == "6") {
+                        //begin of day
+                        if(document.getElementById) {
+                            document.getElementById("STime").innerHTML = "Begin of Day";
+                        }
+                    } else if (dataNya[5] == "7") {
+                        //end of day
+                        if(document.getElementById) {
+                            document.getElementById("STime").innerHTML = "End of day ";
+                        }
+                    }
+                }else if (dataNya[4] == "1") {
+                    //alert(data);
+                    if (dataNya[6] == "6") {
+                        //inisialisasi lelang
+
+                    } else if (dataNya[6] == "7") {
+                        //amend lelang ganti harga dan volume
+
+                        if (jq("#" + dataNya[17] + "_gal") != null) {
+                            jq("#" + dataNya[17] + "-timeFG").css("display", "none");
+                            jq("#" + dataNya[17] + "-stFG").css("display", "block");
+                            jq("#" + dataNya[17] + "-stFG").html("Amended");
+                            jq("#" + dataNya[17] + "-hrefFG").css("display", "none");
+                        }
+                        if (jq("#" + dataNya[17] + "_ho") != null) {
+                            jq("#" + dataNya[17] + "-timeHO").css("display", "none");
+                            jq("#" + dataNya[17] + "-stHO").css("display", "block");
+                            jq("#" + dataNya[17] + "-stHO").html("Amended");
+                            jq("#" + dataNya[17] + "-hrefHO").css("display", "none");
+                        }
+                        if (jq("#" + dataNya[17] + "_hb") != null) {
+                            jq("#" + dataNya[17] + "-timeHB").css("display", "none");
+                            jq("#" + dataNya[17] + "-stHB").css("display", "block");
+                            jq("#" + dataNya[17] + "-stHB").html("Amended");
+                            jq("#" + dataNya[17] + "-hrefHB").css("display", "none");
+                        }
+                    } else if (dataNya[6] == "8") {
+                        //cancel lelang timer menjadi cancel
+                        //alert(data);
+                        if (jq("#" + dataNya[7] + "-timeFG") != null) {
+                            jq("#" + dataNya[7] + "-timeFG").css("display", "none");
+                            jq("#" + dataNya[7] + "-stFG").css("display", "block");
+                            jq("#" + dataNya[7] + "-stFG").html("Cancelled");
+                        }
+                        if (jq("#" + dataNya[7] + "_ho") != null) {
+                            jq("#" + dataNya[7] + "-timeHO").css("display", "none");
+                            jq("#" + dataNya[7] + "-stHO").css("display", "block");
+                            jq("#" + dataNya[7] + "-stHO").html("Cancelled");
+                        }
+                        if (jq("#" + dataNya[7] + "_hb") != null) {
+                            jq("#" + dataNya[7] + "-timeHB").css("display", "none");
+                            jq("#" + dataNya[7] + "-stHB").css("display", "block");
+                            jq("#" + dataNya[7] + "-stHB").html("Cancelled");
+                        }
+                    } else if (dataNya[6] == "9") {
+                        //bid lelang ganti lelang
+                        if (jq("#" + dataNya[7] + "_gal") != null) {
+                            jq("#" + dataNya[7] + "_gal").fadeOut("slow");
+                            jq("#" + dataNya[7] + "_gal").html(dataNya[20]).fadeIn("slow");
+                        }
+                        if (jq("#" + dataNya[7] + "_ho") != null) {
+                            jq("#" + dataNya[7] + "_ho").fadeOut("slow");
+                            jq("#" + dataNya[7] + "_ho").html(dataNya[20]).fadeIn("slow");
+                        }
+                        if (jq("#" + dataNya[7] + "_hb") != null) {
+                            jq("#" + dataNya[7] + "_hb").fadeOut("slow");
+                            jq("#" + dataNya[7] + "_hb").html(dataNya[20]).fadeIn("slow");
+                        }
+
+                    }else if (dataNya[6] == "10") {
+                        //buy it now seharusnya timernya di done kan.
+
+                    }
+                } else if (dataNya[4] == "2") {
+                    // trade done ganti timer dengan done
+
+                    if (jq("#" + dataNya[11] + "-timeFG") != null) {
+                        jq("#" + dataNya[11] + "-timeFG").css("display", "none");
+                        jq("#" + dataNya[11] + "-stFG").css("display", "block");
+                        jq("#" + dataNya[11] + "-stFG").html("Filled");
+                        jq("#" + dataNya[11] + "_gal").fadeOut("slow");
+                        jq("#" + dataNya[11] + "_gal").html(dataNya[16]).fadeIn("slow");
+                    }
+                    if (jq("#" + dataNya[11] + "_ho") != null) {
+                        jq("#" + dataNya[11] + "-timeHO").css("display", "none");
+                        jq("#" + dataNya[11] + "-stHO").css("display", "block");
+                        jq("#" + dataNya[11] + "-stHO").html("Filled");
+                        jq("#" + dataNya[11] + "_ho").fadeOut("slow");
+                        jq("#" + dataNya[11] + "_ho").html(dataNya[16]).fadeIn("slow");
+                    }
+                    if (jq("#" + dataNya[11] + "_hb") != null) {
+                        jq("#" + dataNya[11] + "-timeHB").css("display", "none");
+                        jq("#" + dataNya[11] + "-stHB").css("display", "block");
+                        jq("#" + dataNya[11] + "-stHB").html("Filled");
+                        jq("#" + dataNya[11] + "_hb").fadeOut("slow");
+                        jq("#" + dataNya[11] + "_hb").html(dataNya[16]).fadeIn("slow");
+                    }
+                }
+            }
+        </script>
+      <h2 class="title">Lelang Berjalan</h2>
+
+    <table width="100%" border="0" cellspacing="5" cellpadding="0" class="tbl">
+        <tbody>
+<tr>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+</tr>
+
+          </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      
+      <h2 class="title">3 Tawaran paling diminati</h2>
+      
+      <table cellpadding="0" cellspacing="5" border="0" width="100%" class="tbl">
+        <tr>
+<tr>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+<td align="center">
+<img src="images/nopicture.jpg" width="200" height="200" /><br />
+</td>
+</tr>
+
+        </tr>
+      </table>
+
+      <p>&nbsp;</p>
+      
+    </div>
+
+
+    <div id="rightbar">
+      <h2 class="title">Download</h2>
+      <ul>
+        <li><a href="upload/docs/Formulir%20Pendaftaran%20Keanggotaan%20iPASAR%20(Edwin).pdf">Keanggotaan iPasar</a></li>        
+        <li><a href="upload/docs/Trading%20Fact%20Kontrak%20JAGUNG%20Feb%202015%20Sona.pdf">Trading Fact Kontrak Jagung</a></li>
+        <li><a href="upload/docs/Trading%20Fact%20Kontrak%20KOPI%20SONA.pdf">Trading Fact Kontrak Kopi</a></li>
+	<li><a href="upload/docs/TRADING%20FACT%20GULA%20JAN%202014.pdf">Trading Fact Kontrak Gula</a></li>
+	<li><a href="upload/docs/TRADING%20FACT%20TERPENTIN%20JAN%202014.pdf">Trading Fact Kontrak Terpentin</a></li>	
+        <li><a href="upload/docs/Trading%20Fact%20Kontrak%20GONDORUKEM%20Feb%2012.pdf">Trading Fact Kontrak Gondorukem</a></li>
+        <li><a href="upload/docs/TRADING%20FACT%20KAYU%20JATI%20JAN%202014.pdf">Trading Fact Kayu Jati</a></li>
+	<li><a href="upload/docs/TRADING%20FACT%20KEDELAI%20JAN%202014.pdf">Trading Fact Kayu Kedelai</a></li>
+	<li><a href="upload/docs/Trading%20Fact%20Kontrak%20Seaweed%202012.pdf">Trading Fact Rumput Laut</a></li>
+	<li><a href="upload/docs/Brosur%20iPasar_Update%20Feb%202015.pdf">Brosur iPasar</a></li>
+        <!--<li><a href="upload/docs/Spek.%20Kayu%20Jati%20Bundar%20ex-PPHT%202.pdf">Spek. Kayu Jati Bundar ex-PPHT 2</a></li>        
+        <li><a href="upload/docs/Spek.%20Kayu%20Jati%20Bundar%20ex-PPHT%203.pdf">Spek. Kayu Jati Bundar ex-PPHT 3</a></li>-->
+      </ul><br />
+      <h2 class="title">Pemberitahuan</h2>
+      <ul>
+
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="footer">
+    <ul>
+      <li><a href="http://www.ipasar.co.id/home.jsp" title="Depan">Depan</a>|</li>
+
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a>|</li>
+
+      <li><a href="deliveryPoint.jsp.html" title="Gudang Serah">Gudang Serah</a>|</li>
+      <li><a href="historicalPrice.jsp.html" title="Historical Price / Chart">Historical Price / Chart</a>|</li>
+      <li><a href="faq.jsp.html" title="Pertanyaan">Pertanyaan</a>|</li>
+      <li><a href="about.jsp.html" title="Tentang Kami">Tentang Kami</a>|</li>
+      <li><a href="help.jsp.html" title="Panduan Pengguna">Panduan Pengguna</a></li>
+    </ul>
+    <br />
+    Copyright &copy; 2009 iPasar. <span>All Rights Reserved.</span> </div>
+</div>
+</body>
+</html>
+
+

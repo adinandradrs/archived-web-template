@@ -1,0 +1,12 @@
+var anylinkmenu2={divclass:'anylinkmenu',inlinestyle:'',linktarget:''};
+  anylinkmenu2.items=[["INISIASI JUAL SPOT","http://live.ipasar.co.id/sellAuction1.jsp?type=spot"],["INISIASI BELI SPOT","http://live.ipasar.co.id/buyAuction1.jsp?type=spot"],["INISIASI JUAL CASH","http://live.ipasar.co.id/sellAuction1.jsp?type=cash"],["INISIASI BELI CASH","http://live.ipasar.co.id/buyAuction1.jsp?type=cash"]];
+var anylinkmenu3={divclass:'anylinkmenu',inlinestyle:'',linktarget:''};
+  anylinkmenu3.items=[[mnAbout,"about.jsp"],[mnFAQ,"faq.jsp"],[mnUserGuide,"help.jsp"]];
+var anylinkmenu4={divclass:'anylinkmenu',inlinestyle:'',linktarget:''};
+  anylinkmenu4.items=[[mnTypeKomoditi,"comodityType.jsp"],[mnGdSerah,"deliveryPoint.jsp"],[mnHisPrice,"historicalPrice.jsp"]];
+var anylinkmenu5={divclass:'anylinkmenu',inlinestyle:'',linktarget:''};
+  anylinkmenu5.items=[["Live","http://live.ipasar.co.id/"],["Demo","http://demo.ipasar.co.id/"]];
+var anylinkmenu6={divclass:'anylinkmenu',inlinestyle:'',linktarget:''};
+  anylinkmenu6.items=[["SPOT","catalogs.jsp?type=spot&side=2"],["CASH","catalogs.jsp?type=cash&side=2"]];
+var anylinkmenu7={divclass:'anylinkmenu',inlinestyle:'',linktarget:''};
+  anylinkmenu7.items=[["SPOT","catalogs.jsp?type=spot&side=1"],["CASH","catalogs.jsp?type=cash&side=1"]];

@@ -1,0 +1,440 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="keyword" content="pasar, komoditas, fisik, pasar komoditas, pasar komoditas fisik, lelang, auction, pasar komoditas fisik,
+      lelang komoditi, comodity market" />
+<meta name="description" content="Pasar Komoditas Fisik Indonesia" />
+<link REL="SHORTCUT ICON" HREF="images/favicon.ico">
+<title>iPasar </title>
+
+<script type="text/javascript">
+    var mnAbout = 'Tentang Kami';
+    var mnFAQ = 'Pertanyaan';
+    var mnUserGuide = 'Panduan Pengguna';
+    var mnTypeKomoditi = 'Tipe Komoditi';
+    var mnGdSerah = 'Gudang Serah ';
+    var mnHisPrice = 'Historical Price / Chart';
+
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.marquee.js"></script>
+<script type="text/javascript" src="js/dwrengine.js"></script>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script type="text/javascript">
+    var jq = jQuery.noConflict();
+</script>
+<script type="text/javascript" src="js/dropdownmenu/menucontents.js"></script>
+<script type="text/javascript" src="js/dropdownmenu/anylinkmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="css/anylinkmenu.css" />
+<link rel="stylesheet" type="text/css" href="css/simpletree.css" />
+<link href="css/style-cilantro.css" rel="stylesheet" type="text/css" />
+
+<noscript>
+<meta http-equiv="refresh" content="1; URL='nojscript.jsp.html'">
+</noscript>
+
+<script type="text/javascript">
+	anylinkmenu.init("menuanchorclass");
+</script>
+<script type="text/javascript" src="js/treeview/simpletreemenu.js"></script>
+<script>
+   var serverTime = new Date('Sun Apr 19 2015 00:29:54');
+
+     //var serverTime ;
+    function init()
+    {
+        showServerTime();
+        //dwr.engine.setActiveReverseAjax(true);
+    }
+
+
+    function setInnerHtml(idNya, data) {
+        var getId = document.getElementById(idNya);
+        if (getId != null) {
+            getId.innerHTML = data;
+        }
+    }
+
+
+    function setTime(result)
+    {
+        serverTime = new Date(result);
+        //showServerTime();
+    }
+
+    function showServerTime() {
+        if(!document.all && !document.getElementById) return;
+        var dN =new Array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
+        mN=new Array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+        var hours = serverTime.getHours();
+        var minutes = serverTime.getMinutes();
+        var seconds = serverTime.getSeconds();
+        var day=dN[serverTime.getDay()];
+        var month=mN[serverTime.getMonth()];
+        var dat=serverTime.getDate();
+        var year=serverTime.getFullYear();
+
+        serverTime.setSeconds(seconds+1);
+
+        if(hours<=9) {hours = "0" + hours;}
+        if(minutes<=9) {minutes = "0" + minutes;}
+        if(seconds<=9) {seconds = "0" + seconds;}
+
+        ShowTime = day + "," + "&nbsp;" +  month + "&nbsp;" + dat + "," +"&nbsp;" + year + "&nbsp;" +  " - " +hours + ":" + minutes + ":" + seconds +  "&nbsp;" + "GMT+7";
+
+        if(document.getElementById) {
+            document.getElementById("STime").innerHTML = ShowTime;
+        }
+        else if(document.all) {
+            STime.innerHTML = ShowTime;
+        }
+        setTimeout("showServerTime()", 1000);
+    }
+    <!--
+    jq(function () {
+        // basic version is: $('div.demo marquee').marquee() - but we're doing some sexy extras
+        
+        jq('#textmarque marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });
+        
+        jq('#subcontent marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });        
+    });
+    //-->    
+</script>
+<script language="JavaScript" src="js/timer.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/date.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/jquery.datePicker.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/datePicker.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/demo.css">
+</head>
+<body onload="init();">
+<div id="wrapper">
+  <div id="header"><img src="images/header1.jpg" alt="iPasar" width="257" height="94" />
+    <div id="language">
+      <p><span id="STime">Selamat datang</span><br />
+        Pilih Bahasa : <a href="historicalPrice.jsp-Bahasa=id_ID.html">Indonesia</a> | <a href="historicalPrice.jsp-Bahasa=en_US.html">Inggris</a></p>
+<!--        <form name="frmCari" action="" method="post">
+        <table cellpadding="0" cellspacing="2" border="0">
+          <tr>
+            <td width="120">&nbsp;</td>
+            <td><input name="keyword" type="text" class="txt" value="Pencarian" /></td>
+            <td><input type="image" src="images/btnsearch.jpg" alt="Pencarian" /></td>
+          </tr>
+        </table>
+      </form> -->
+    </div>
+    <img src="images/header2.jpg" alt="Komoditi Mandiri" width="311" height="94" /><br class="clear" />
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.html" title="Depan">Depan</a></li>
+      <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#" title="Lelang Beli" class="menuanchorclass" rel="anylinkmenu2">Inisiaisi</a></li>
+      <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#" title="Katalog Jual" class="menuanchorclass" rel="anylinkmenu6">KATALOG JUAL</a></li>
+      <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#" title="Katalog Beli" class="menuanchorclass" rel="anylinkmenu7">KATALOG BELI</a></li>
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a></li>
+      <li><a href="newsArchieve.jsp.html" title="Berita & Data" class="menuanchorclass" rel="anylinkmenu4">Berita & Data</a></li>
+      <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#" title="Masuk" class="menuanchorclass" rel="anylinkmenu5">Masuk</a></li>
+      <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#" class="menuanchorclass" rel="anylinkmenu3" title="Panduan" class="menuanchorclass" rel="anylinkmenu3">Panduan</a></li>
+    </ul>
+  </div>
+  <div id="textmarque">
+    <marquee behavior="scroll" direction="left" scrollamount="2">
+    
+                <a class="up">JAGPILJI&nbsp;3,350&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;350</a>&nbsp;&nbsp;
+                
+                <a class="up">GUMROSINPPHT3&nbsp;2,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;305</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSN&nbsp;3,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;150</a>&nbsp;&nbsp;
+                
+                <a class="down">JAGPILJB&nbsp;3,350&nbsp;<img src="images/down.gif" alt="Down" width="17" height="11" />&nbsp;(150)</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSU&nbsp;3,500&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;50</a>&nbsp;&nbsp;
+                
+                <a class="stabil">KEDELAIAJB&nbsp;9,000&nbsp;<img src="images/stabil.gif" alt="Down" width="17" height="11" />&nbsp;0</a>&nbsp;&nbsp;
+                
+    </marquee>
+  </div>
+  <div id="subcontent">
+    <marquee behavior="scroll" direction="left" scrollamount="1">
+    iPasar - Mitra Kesejahteraan dan Kemakmuran Bangsa&nbsp;&nbsp;
+    
+                | <a href="news.jsp-news_id=81.html">TRIBUNNEWS.COM : Pemerintahan Jokowi Targetkan Swasembada Padi Tahun 2015, Jagung 2016, dan Kedelai 2017</a>
+                
+                | <a href="news.jsp-news_id=79.html">Republika :  Gorontalo ekspor jagung ke Filipina</a>
+                
+                | <a href="news.jsp-news_id=80.html">Cahayareformasi : Jajaki Naikkan Harga Jagung, Presiden Jokowi Minta Petani Semangat Hadapi Kompetisi</a>
+                
+                | <a href="news.jsp-news_id=77.html">BLOG : INFORMASI TRANSAKSI PT. iPASAR INDONESIA</a>
+                
+                | <a href="news.jsp-news_id=70.html">IPSR : Sepanjang Tahun 2012 Nilai Transaksi Lelang Kayu di iPASAR Mencapai Rp. 26 Milyar</a>
+                
+                | <a href="news.jsp-news_id=75.html">TMPO : Produksi Terbatas, Harga Kopi Dunia Justru Turun  </a>
+                
+                | <a href="news.jsp-news_id=74.html">KMPS : Pemasaran Rumput Laut Diperluas</a>
+                
+                | <a href="news.jsp-news_id=22.html">IPSR : Lelang Produk Petani Lewat Internet di iPASAR  </a>
+                
+                | <a href="news.jsp-news_id=59.html">IPSR : Harga Acuan Jagung Diperlukan</a>
+                
+                | <a href="news.jsp-news_id=62.html">KKPG : iPasar Berhasil Fasilitasi Transaksi Kakao</a>
+                
+    </marquee>
+  </div>
+  <div id="content">
+    <div id="leftbar">
+      <h2 class="title">Kategori Barang</h2>
+      <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td><ul id="treemenu1" class="treeview">
+                <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#">Komoditi Pertanian</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=8">Jagung Pipilan</a></li>
+                        <li><a href="catalogs.jsp?catId=17">Kedelai</a></li>
+                        <li><a href="catalogs.jsp?catId=18">Benih Kedelai</a></li>
+                    </ul>
+                </li>
+                <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#">Komoditi Kehutanan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=10">Kayu</a></li>
+                        <li><a href="catalogs.jsp?catId=13">Gum Rosin</a></li>
+                        <li><a href="catalogs.jsp?catId=14">Turpentine</a></li>
+                    </ul>
+                </li>
+                <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#">Komoditi Kelautan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=11">Cottonii</a></li>
+                    </ul>
+                </li>
+                <li><a href="historicalPrice.jsp-Bahasa=id_ID.html#">Komoditi Perkebunan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=12">Kopi Arabika</a></li>
+                        <li><a href="catalogs.jsp?catId=15">Gula Kristal Putih</a></li>
+			   <li><a href="catalogs.jsp?catId=16">Karet Bokor</a></li>
+                    </ul>
+                </li>                
+            </ul>
+            <script type="text/javascript">
+		ddtreemenu.createTree("treemenu1", true, 5)
+            </script>
+            <br />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+<div id="isi">
+      <h2 class="title">Historical Price</h2>
+      <br />
+      <center>
+      <applet name="FnChartsApplet1" width="520" height="490" codebase="applet" code="FnChartsApplet.class" archive="fncharts.jar" MAYSCRIPT>
+      <!-- APPLET CONFIGURATION PARAMETERS -->
+      <param name="AppletName" value="FnChartsApplet1">
+      <param name="_UserID" value="sample_id12345">
+      <param name="Copyright" value="Copyright (c) 1999-2009 WD SOFTWARE http://www.wdsoftware.com">
+      <param name="Encoding" value="ISO8859_1">
+      <!-- DATA ACCESS PARAMETERS -->
+      <param name="DataSource" value="../GetEodData?symbol={SYMBOL}&timeframe={Timeframe}&first_timestamp={FirstDataTimestamp}&last_timestamp={LastDataTimestamp}">
+      <param name="IntradayDataSource" value="applet/get_intraday.jsp">
+      <param name="DisplayDataRequests" value="false">
+      <param name="UseBrowserCache" value="true">
+      <!-- AUTOMATIC DATA REFRESH CONFIGURATION -->
+      <param name="AutoRefreshTime" value="30">
+      <param name="AutoRefreshBeep" value="true">
+      <!-- CACHE MEMORY CONFIGURATION -->
+      <param name="UnusedCacheRecycleTime" value="10">
+      <!-- PREDEFINED SYMBOLS DISPLAYED AUTOMATICALLY AT STARTUP -->
+      <param name="Symbol" value="SAMPLE1">
+      <param name="SecondarySymbol" value="">
+      <!-- PREDEFINED FAVORITE SYMBOLS -->
+      <param name="FavoriteSymbols" value="SAMPLE1,SAMPLE2,SAMPLE3">
+      <!-- USER CONFIGURATION SETTINGS-->
+      <param name="_UserConfigurationLoadURL" value="userdata/load_configuration.php?userID={UserID}">
+      <param name="_UserConfigurationSaveURL" value="userdata/save_configuration.php?userID={UserID}">
+      <param name="LoadUserConfigurationOnStartup" value="false">
+      <!-- USER STUDIES SETTINGS-->
+      <param name="_UserStudiesLoadURL" value="userdata/load_studies.php?userID={UserID}&symbol={symbol}&dataType={DataType}">
+      <param name="_UserStudiesSaveURL" value="userdata/save_studies.php?userID={UserID}&symbol={symbol}&dataType={DataType}">
+      <!-- CONFIGURATION OF BUY AND SELL BUTTONS -->
+      <param name="BuyURL" value="">
+      <param name="SellURL" value="">
+      <param name="target" value="_blank">
+      <param name="BuySellAction" value="">
+      <!-- USER-DEFINED INDICATORS -->
+      <param name="_PredefinedIndicatorsURL" value="userdata/predefined_indicators.txt">
+      <param name="_UserIndicatorsLoadURL" value="userdata/load_indicators.php?userID={UserID}">
+      <param name="_UserIndicatorsSaveURL" value="userdata/save_indicators.php?userID={UserID}">
+      <param name="EnableUserIndicatorDefinition" value="false">
+      <!-- INITIAL TECHNICAL ANALYSIS SETTINGS (OVERRIDABLE BY USERS) -->
+      <param name="ChartType" value="candle">
+      <param name="Scale" value="LogUncorrelated">
+      <param name="TimeCompression" value="day">
+      <param name="Indicators" value="VOL;ROC;MACD(12,26,9)">
+      <param name="PriceIndicators" value="SMA1;SMA2;SMA3">
+      <param name="TimeCompressionOptions" value="day,week,month,intraday,intraday_1,intraday_2,intraday_3,intraday_4,intraday_5,intraday_10,intraday_15,intraday_20,intraday_30,intraday_60">
+      <!-- INITIAL VISIBLE RANGE (CUSTOMIZABLE BY USERS)-->
+      <param name="DisplayRange" value="6months">
+      <!-- INITIAL TIMEFRAME SETTINGS (CUSTOMIZABLE BY USERS)-->
+      <param name="Timeframe" value="2">
+      <param name="IntradayTimeframe" value="5">
+      <!-- UI APPEARANCE -->
+      <param name="BorderColor" value="0x000000">
+      <param name="UIFontName" value="">
+      <param name="UIFontSize" value="12">
+      <param name="UIFontStyle" value="PLAIN">
+      <param name="UIBgColor" value="0xFFF3BD">
+      <param name="UITextColor" value="0x000000">
+      <param name="StatusBarFontName" value="">
+      <param name="StatusBarFontSize" value="11">
+      <param name="StatusBarFontStyle" value="PLAIN">
+      <param name="ImageButtonBgColor" value="0xFFFFE7">
+      <param name="ImageButtonFrameColor" value="0x000000">
+      <param name="IconType" value="COLOR">
+      <param name="HideSymbolEntryForm" value="false">
+      <param name="SymbolEntryFormWidth" value="">
+      <param name="DisableAppletDetachment" value="false">
+      <param name="DisableSymbolEntryFormVisibilitySwitch" value="false">
+      <!-- CHART APPEARANCE -->
+      <param name="ChartBgColor" value="0xFFFFE7">
+      <param name="ChartFgColor" value="0xFFFFFF">
+      <param name="ChartTitleColor" value="0x000000">
+      <param name="ChartTitleBgColor" value="0xFFF3BD">
+      <param name="ChartTitleFrameColor" value="0x3169C6">
+      <param name="AxisColor" value="0x3169C6">
+      <param name="AxisLabelColor" value="0x000000">
+      <param name="AxisLabelBgColor" value="">
+      <param name="AxisLabelFrameColor" value="">
+      <param name="InfoLineColor" value="0xE00000">
+      <param name="InfoLineBgColor" value="">
+      <param name="InfoLineFrameColor" value="">
+      <param name="ProgressBarColor" value="0x0000E0">
+      <param name="BuySignalColor" value="0x00C800">
+      <param name="SellSignalColor" value="0xE80000">
+      <param name="DecimalPlaces" value="2">
+      <param name="DateDisplayFormat" value="mmm d, yyyy">
+      <!-- CHART FONTS -->
+      <param name="ChartTitleFontName" value="">
+      <param name="ChartTitleFontSize" value="10">
+      <param name="ChartTitleFontStyle" value="PLAIN">
+      <param name="InfoLineFontName" value="">
+      <param name="InfoLineFontSize" value="10">
+      <param name="InfoLineFontStyle" value="PLAIN">
+      <param name="AxisLabelFontName" value="">
+      <param name="AxisLabelFontSize" value="10">
+      <param name="AxisLabelFontStyle" value="PLAIN">
+      <param name="LegendFontName" value="SansSerif">
+      <param name="LegendFontStyle" value="BOLD">
+      <param name="LegendFontSize" value="11">
+      <!-- CHART COLORS (CUSTOMIZABLE BY USERS) -->
+      <param name="GridColor" value="0xD8D8D8">
+      <param name="CrosshairColor" value="0xC0C0C0">
+      <param name="PriceColor" value="0x008000">
+      <param name="BullishCandleColor" value="0x00C000">
+      <param name="BearishCandleColor" value="0xF00000">
+      <param name="BgPriceColor" value="0xB09080">
+      <param name="ExtraPriceColor" value="0xF80000,0x00E000,0x0000F0,0xcc66cc,0xffcc33,0x00cccc,0xc0c0c0,0x996633,0xffff00,0x99aa00">
+      <param name="OpenInterestColor" value="0x0000A0">
+      <param name="EMA1Color" value="0x000000">
+      <param name="SMA1Color" value="0xF00000">
+      <param name="SMA2Color" value="0xFF00FF">
+      <param name="SMA3Color" value="0x3165FF">
+      <param name="BOLColor" value="0x808080">
+      <param name="ParabolicSARColor" value="0x78A8FF">
+      <param name="IndicatorColor" value="0x0000D0,0xF4B000,0x00A000">
+      <param name="TrendLineColor" value="0xFF0000">
+      <param name="IndicatorSpecificLineColor" value="0x000000">
+      <!-- CHART LINE WIDTHS (CUSTOMIZABLE BY USERS) -->
+      <param name="PriceLineWidth" value="2">
+      <param name="BgPriceLineWidth" value="0">
+      <param name="ExtraPriceLineWidth" value="0,0,0,0,0,0,0,0,0,0">
+      <param name="OpenInterestLineWidth" value="1">
+      <param name="EMA1LineWidth" value="0">
+      <param name="SMA1LineWidth" value="0">
+      <param name="SMA2LineWidth" value="0">
+      <param name="SMA3LineWidth" value="0">
+      <param name="BOLLineWidth" value="0,0">
+      <param name="ParabolicSARLineWidth" value="1">
+      <param name="IndicatorLineWidth" value="1,0,0">
+      <!-- THIS MESSAGE IS DISPLAYED WHEN JAVA SUPPORT IS NOT ENABLED -->
+       Java support must be enabled in order to display FnCharts.
+       <br>You can download Java from <a href="http://www.java.com">http://www.java.com</a>
+    </applet>
+    </center>
+</div>
+
+
+    <div id="rightbar">
+      <h2 class="title">Download</h2>
+      <ul>
+        <li><a href="upload/docs/Formulir Pendaftaran Keanggotaan iPASAR (Edwin).pdf">Keanggotaan iPasar</a></li>        
+        <li><a href="upload/docs/Trading Fact Kontrak JAGUNG Feb 2015 Sona.pdf">Trading Fact Kontrak Jagung</a></li>
+        <li><a href="upload/docs/Trading Fact Kontrak KOPI SONA.pdf">Trading Fact Kontrak Kopi</a></li>
+	<li><a href="upload/docs/TRADING FACT GULA JAN 2014.pdf">Trading Fact Kontrak Gula</a></li>
+	<li><a href="upload/docs/TRADING FACT TERPENTIN JAN 2014.pdf">Trading Fact Kontrak Terpentin</a></li>	
+        <li><a href="upload/docs/Trading Fact Kontrak GONDORUKEM Feb 12.pdf">Trading Fact Kontrak Gondorukem</a></li>
+        <li><a href="upload/docs/TRADING FACT KAYU JATI JAN 2014.pdf">Trading Fact Kayu Jati</a></li>
+	<li><a href="upload/docs/TRADING FACT KEDELAI JAN 2014.pdf">Trading Fact Kayu Kedelai</a></li>
+	<li><a href="upload/docs/Trading Fact Kontrak Seaweed 2012.pdf">Trading Fact Rumput Laut</a></li>
+	<li><a href="upload/docs/Brosur iPasar_Update Feb 2015.pdf">Brosur iPasar</a></li>
+        <!--<li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 2.pdf">Spek. Kayu Jati Bundar ex-PPHT 2</a></li>        
+        <li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 3.pdf">Spek. Kayu Jati Bundar ex-PPHT 3</a></li>-->
+      </ul><br />
+      <h2 class="title">Pemberitahuan</h2>
+      <ul>
+
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="footer">
+    <ul>
+      <li><a href="http://www.ipasar.co.id/home.jsp" title="Depan">Depan</a>|</li>
+
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a>|</li>
+
+      <li><a href="deliveryPoint.jsp.html" title="Gudang Serah ">Gudang Serah </a>|</li>
+      <li><a href="historicalPrice.jsp.html" title="Historical Price / Chart">Historical Price / Chart</a>|</li>
+      <li><a href="faq.jsp.html" title="Pertanyaan">Pertanyaan</a>|</li>
+      <li><a href="about.jsp.html" title="Tentang Kami">Tentang Kami</a>|</li>
+      <li><a href="help.jsp.html" title="Panduan Pengguna">Panduan Pengguna</a></li>
+    </ul>
+    <br />
+    Copyright &copy; 2009 iPasar. <span>All Rights Reserved.</span> </div>
+</div>
+</body>
+</html>

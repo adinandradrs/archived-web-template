@@ -1,0 +1,511 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="keyword" content="pasar, komoditas, fisik, pasar komoditas, pasar komoditas fisik, lelang, auction, pasar komoditas fisik,
+      lelang komoditi, comodity market" />
+<meta name="description" content="Pasar Komoditas Fisik Indonesia" />
+<link REL="SHORTCUT ICON" HREF="images/favicon.ico">
+<title>iPasar </title>
+
+<script type="text/javascript">
+    var mnAbout = 'Tentang Kami';
+    var mnFAQ = 'Pertanyaan';
+    var mnUserGuide = 'Panduan Pengguna';
+    var mnTypeKomoditi = 'Tipe Komoditi';
+    var mnGdSerah = 'Gudang Serah ';
+    var mnHisPrice = 'Historical Price / Chart';
+
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.marquee.js"></script>
+<script type="text/javascript" src="js/dwrengine.js"></script>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script type="text/javascript">
+    var jq = jQuery.noConflict();
+</script>
+<script type="text/javascript" src="js/dropdownmenu/menucontents.js"></script>
+<script type="text/javascript" src="js/dropdownmenu/anylinkmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="css/anylinkmenu.css" />
+<link rel="stylesheet" type="text/css" href="css/simpletree.css" />
+<link href="css/style-cilantro.css" rel="stylesheet" type="text/css" />
+
+<noscript>
+<meta http-equiv="refresh" content="1; URL='nojscript.jsp.html'">
+</noscript>
+
+<script type="text/javascript">
+	anylinkmenu.init("menuanchorclass");
+</script>
+<script type="text/javascript" src="js/treeview/simpletreemenu.js"></script>
+<script>
+   var serverTime = new Date('Sun Apr 19 2015 00:29:50');
+
+     //var serverTime ;
+    function init()
+    {
+        showServerTime();
+        //dwr.engine.setActiveReverseAjax(true);
+    }
+
+
+    function setInnerHtml(idNya, data) {
+        var getId = document.getElementById(idNya);
+        if (getId != null) {
+            getId.innerHTML = data;
+        }
+    }
+
+
+    function setTime(result)
+    {
+        serverTime = new Date(result);
+        //showServerTime();
+    }
+
+    function showServerTime() {
+        if(!document.all && !document.getElementById) return;
+        var dN =new Array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
+        mN=new Array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+        var hours = serverTime.getHours();
+        var minutes = serverTime.getMinutes();
+        var seconds = serverTime.getSeconds();
+        var day=dN[serverTime.getDay()];
+        var month=mN[serverTime.getMonth()];
+        var dat=serverTime.getDate();
+        var year=serverTime.getFullYear();
+
+        serverTime.setSeconds(seconds+1);
+
+        if(hours<=9) {hours = "0" + hours;}
+        if(minutes<=9) {minutes = "0" + minutes;}
+        if(seconds<=9) {seconds = "0" + seconds;}
+
+        ShowTime = day + "," + "&nbsp;" +  month + "&nbsp;" + dat + "," +"&nbsp;" + year + "&nbsp;" +  " - " +hours + ":" + minutes + ":" + seconds +  "&nbsp;" + "GMT+7";
+
+        if(document.getElementById) {
+            document.getElementById("STime").innerHTML = ShowTime;
+        }
+        else if(document.all) {
+            STime.innerHTML = ShowTime;
+        }
+        setTimeout("showServerTime()", 1000);
+    }
+    <!--
+    jq(function () {
+        // basic version is: $('div.demo marquee').marquee() - but we're doing some sexy extras
+        
+        jq('#textmarque marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });
+        
+        jq('#subcontent marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });        
+    });
+    //-->    
+</script>
+<script language="JavaScript" src="js/timer.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/date.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/jquery.datePicker.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/datePicker.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/demo.css">
+</head>
+<body onload="init();">
+<div id="wrapper">
+  <div id="header"><img src="images/header1.jpg" alt="iPasar" width="257" height="94" />
+    <div id="language">
+      <p><span id="STime">Selamat datang</span><br />
+        Pilih Bahasa : <a href="deliveryPoint.jsp-Bahasa=id_ID.html">Indonesia</a> | <a href="deliveryPoint.jsp-Bahasa=en_US.html">Inggris</a></p>
+<!--        <form name="frmCari" action="" method="post">
+        <table cellpadding="0" cellspacing="2" border="0">
+          <tr>
+            <td width="120">&nbsp;</td>
+            <td><input name="keyword" type="text" class="txt" value="Pencarian" /></td>
+            <td><input type="image" src="images/btnsearch.jpg" alt="Pencarian" /></td>
+          </tr>
+        </table>
+      </form> -->
+    </div>
+    <img src="images/header2.jpg" alt="Komoditi Mandiri" width="311" height="94" /><br class="clear" />
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.html" title="Depan">Depan</a></li>
+      <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#" title="Lelang Beli" class="menuanchorclass" rel="anylinkmenu2">Inisiaisi</a></li>
+      <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#" title="Katalog Jual" class="menuanchorclass" rel="anylinkmenu6">KATALOG JUAL</a></li>
+      <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#" title="Katalog Beli" class="menuanchorclass" rel="anylinkmenu7">KATALOG BELI</a></li>
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a></li>
+      <li><a href="newsArchieve.jsp.html" title="Berita & Data" class="menuanchorclass" rel="anylinkmenu4">Berita & Data</a></li>
+      <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#" title="Masuk" class="menuanchorclass" rel="anylinkmenu5">Masuk</a></li>
+      <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#" class="menuanchorclass" rel="anylinkmenu3" title="Panduan" class="menuanchorclass" rel="anylinkmenu3">Panduan</a></li>
+    </ul>
+  </div>
+  <div id="textmarque">
+    <marquee behavior="scroll" direction="left" scrollamount="2">
+    
+                <a class="up">JAGPILJI&nbsp;3,350&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;350</a>&nbsp;&nbsp;
+                
+                <a class="up">GUMROSINPPHT3&nbsp;2,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;305</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSN&nbsp;3,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;150</a>&nbsp;&nbsp;
+                
+                <a class="down">JAGPILJB&nbsp;3,350&nbsp;<img src="images/down.gif" alt="Down" width="17" height="11" />&nbsp;(150)</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSU&nbsp;3,500&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;50</a>&nbsp;&nbsp;
+                
+                <a class="stabil">KEDELAIAJB&nbsp;9,000&nbsp;<img src="images/stabil.gif" alt="Down" width="17" height="11" />&nbsp;0</a>&nbsp;&nbsp;
+                
+    </marquee>
+  </div>
+  <div id="subcontent">
+    <marquee behavior="scroll" direction="left" scrollamount="1">
+    iPasar - Mitra Kesejahteraan dan Kemakmuran Bangsa&nbsp;&nbsp;
+    
+    </marquee>
+  </div>
+  <div id="content">
+    <div id="leftbar">
+      <h2 class="title">Kategori Barang</h2>
+      <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td><ul id="treemenu1" class="treeview">
+                <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#">Komoditi Pertanian</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=8">Jagung Pipilan</a></li>
+                        <li><a href="catalogs.jsp?catId=17">Kedelai</a></li>
+                        <li><a href="catalogs.jsp?catId=18">Benih Kedelai</a></li>
+                    </ul>
+                </li>
+                <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#">Komoditi Kehutanan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=10">Kayu</a></li>
+                        <li><a href="catalogs.jsp?catId=13">Gum Rosin</a></li>
+                        <li><a href="catalogs.jsp?catId=14">Turpentine</a></li>
+                    </ul>
+                </li>
+                <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#">Komoditi Kelautan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=11">Cottonii</a></li>
+                    </ul>
+                </li>
+                <li><a href="deliveryPoint.jsp-Bahasa=id_ID.html#">Komoditi Perkebunan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=12">Kopi Arabika</a></li>
+                        <li><a href="catalogs.jsp?catId=15">Gula Kristal Putih</a></li>
+			   <li><a href="catalogs.jsp?catId=16">Karet Bokor</a></li>
+                    </ul>
+                </li>                
+            </ul>
+            <script type="text/javascript">
+		ddtreemenu.createTree("treemenu1", true, 5)
+            </script>
+            <br />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+<div id="isi">
+    <script type="text/javascript" src="js/wz_tooltip/wz_tooltip.js"></script>
+    <script type="text/javascript" src="js/wz_tooltip/tip_centerwindow.js"></script>
+  <h2 class="title">Peta Gudang Serah </h2><br />
+  <table width="100%" align="center"><tr><td align="center">
+  <img src="images/ipasar.gif" width="525" height="213" usemap="#ipasarmap" border="1" style="border-color:#996600;"/>
+  <map name="ipasarmap">
+    
+    <!--
+    <area shape="circle" coords="45,40,5" href="javascript:void(0);" onMouseOver="Tip('Medan (Sumatera Utara)')" onClick="Tip(document.getElementById('med').innerHTML, TITLE, 'Medan (Sumatera Utara)', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000)" onMouseOut="UnTip()" />
+    <area shape="circle" coords="84,67,5" href="javascript:void(0);" onMouseOver="Tip('Dumai (Riau)')" onClick="Tip(document.getElementById('dum').innerHTML, TITLE, 'Dumai (Riau)', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000)" onMouseOut="UnTip()" />    
+    <area shape="circle" coords="66,85,5" href="javascript:void(0);" onMouseOver="Tip('Padang (Sumatera Barat)')" onClick="Tip(document.getElementById('pad').innerHTML, TITLE, 'Padang (Sumatera Barat)', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000)" onMouseOut="UnTip()" />      
+    <area shape="circle" coords="102,95,5" href="javascript:void(0);" onMouseOver="Tip('Jambi (Jambi)')" onMouseOut="UnTip()" />
+    <area shape="circle" coords="86,116,5" href="javascript:void(0);" onMouseOver="Tip('Bengkulu (Bengkulu)')" onMouseOut="UnTip()" />
+    <area shape="circle" coords="122,105,5" href="javascript:void(0);" onMouseOver="Tip('Pangkal Pinang (Kep. Bangka Belitung)')" onMouseOut="UnTip()" />
+    <area shape="circle" coords="117,112,5" href="javascript:void(0);" onMouseOver="Tip('Palembang (Sumatera Selatan)')" onMouseOut="UnTip()" />
+    <area shape="circle" coords="117,138,5" href="javascript:void(0);" onMouseOver="Tip('Bandar Lampung (Lampung)')" onMouseOut="UnTip()" />
+    -->
+    <area shape="circle" coords="126,150,5" href="javascript:void(0);" onMouseOver="Tip('Cilegon (Banten) <br>Click for detail')" onClick="Tip(document.getElementById('cil').innerHTML, TITLE, 'Cilegon', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000, SHADOW, true)" onMouseOut="UnTip()" />
+    <area shape="circle" coords="136,150,5" href="javascript:void(0);" onMouseOver="Tip('DKI Jakarta <br>Click for detail')" onClick="Tip(document.getElementById('jak').innerHTML, TITLE, 'DKI Jakarta', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000, SHADOW, true)" onMouseOut="UnTip()" />
+    <!--
+    <area shape="circle" coords="144,158,5" href="javascript:void(0);" onMouseOver="Tip('Bandung (Jawa Barat)')" onClick="Tip(document.getElementById('ban').innerHTML, TITLE, 'Bandung', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000, SHADOW, true)" onMouseOut="UnTip()" />
+    -->
+    <area shape="circle" coords="172,159,5" href="javascript:void(0);" onMouseOver="Tip('Semarang (Jawa Tengah)<br>Click for detail')" onClick="Tip(document.getElementById('sem').innerHTML, TITLE, 'Semarang', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000, SHADOW, true)" onMouseOut="UnTip()" />
+    <area shape="circle" coords="245,182,5" href="javascript:void(0);" onMouseOver="Tip('Lombok<br>Click for detail')" onClick="Tip(document.getElementById('lom').innerHTML, TITLE, 'Lombok', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000, SHADOW, true)" onMouseOut="UnTip()" />
+    <area shape="circle" coords="256,180,5" href="javascript:void(0);" onMouseOver="Tip('Sumbawa<br>Click for detail')" onClick="Tip(document.getElementById('sum').innerHTML, TITLE, 'Sumbawa', CLOSEBTN, true, EXCLUSIVE, true, STICKY, true, CENTERWINDOW, true, FADEIN, 1000, SHADOW, true)" onMouseOut="UnTip()" />
+
+  </map>
+<!-- start of Link Detail Gudang
+    <div id="med" style="display:none"></div>
+    <div id="dum" style="display:none"></div>
+    <div id="pad" style="display:none"></div>
+    <div id="cil" style="display:none"></div>
+    <div id="jak" style="display:none"></div>
+end of Link Detail Gudang -->
+		<!-- Lombok [lom]-->    
+    <div id="lom" style="display:none">
+        <table width="100%" border="1" cellspacing="0" cellpadding="5">
+            <col width="20"><col width="200"><col width="400"><col width="50">
+        <tr height="17">
+            <th>No</th>
+            <th>Jenis Gudang</th>            
+            <th>Alamat</t
+            <th>Kapasitas</th>
+        </tr>
+        <tr height="17">
+            <td>1.</td>
+            <td>Gudang Komoditi</td>
+            <td>Dusun Serumbung, Desa Lembar, Kec. Lembar, Kab. Lombok Barat, NTB</td>            
+            <td>2.500 Ton</td>
+        </tr>
+        <tr height="17">
+            <td>2.</td>
+            <td>Gudang Komoditi dan Prosessor Jagung Pipilan</td>
+            <td>Desa Mekarsari, Kec. Suralaga, Kab. Lombok Timur, NTB</td>            
+            <td>1.000 Ton</td>
+        </tr>
+        </table>
+    </div>
+    
+		<!-- Sumbawa [sum]-->    
+    <div id="sum" style="display:none">
+        <table width="100%" border="1" cellspacing="0" cellpadding="5">
+            <col width="20"><col width="200"><col width="400"><col width="50">
+        <tr height="17">
+            <th>No</th>
+            <th>Jenis Gudang</th>            
+            <th>Alamat</t
+            <th>Kapasitas</th>
+        </tr>
+        <tr height="17">
+            <td>1.</td>
+            <td>Gudang Komoditi</td>
+            <td>Jl. Raya Plampang - Bima, Dusun Sejati, Desa Plampang, Kec. Plampang, Kab. Sumbawa Besar, NTB</td>            
+            <td>2.000 Ton</td>
+        </tr>
+        </table>
+    </div>
+    
+		<!-- Semarang [sem]-->
+    <div id="sem" style="display:none">
+        <table width="100%" border="1" cellspacing="0" cellpadding="5">
+        <col width="20"><col width="100"><col width="100"><col width="100">
+        <tr height="17">
+            <th width="20">NO</th>
+            <th width="100">TPK</th>
+            <th width="100">KABUPATEN</th>
+            <th width="100">PROPINSI</th>
+        </tr>
+        <tr height="17">
+            <td>1.</td>
+            <td>GAMBILANGU</td>
+            <td>KENDAL</td>
+            <td>JAWA TENGAH</td>
+        </tr>
+        <tr height="17"><td colspan="4">&nbsp;</td></tr>
+        <tr height="17">
+            <td>2.</td>
+            <td>TERONGAN</td>
+            <td>KEBON HARJO</td>
+            <td>JAWA TENGAH</td>
+        </tr>
+        <tr height="17">
+            <td>&nbsp;</td>
+            <td>SALE</td>
+            <td>KEBON HARJO</td>
+            <td>JAWA TENGAH</td>
+        </tr>
+        <tr height="17"><td colspan="4">&nbsp;</td></tr>
+        <tr height="17">
+            <td>3.</td>
+            <td>BANJARWARU</td>
+            <td>BLORA</td>
+            <td>JAWA TENGAH</td>
+        </tr>
+        </table>        
+    </div>
+
+    <!--Jakarta -->
+    <div id="jak" style="display:none">
+    <table width="100%" border="1" cellspacing="0" cellpadding="5">
+    <col width="103"><col width="118"><col width="275">
+    <col width="43"><col width="66"><col width="72"><col width="68">
+    <tr height="17">
+        <th width="89">CABANG / SUB. CABANG</th>
+        <th width="142">NAMA GUDANG</th>
+        <th width="195">ALAMAT GUDANG</th>
+        <th width="41">UNIT (JML)</th>
+        <th width="52">TYPE (M2)</th>
+        <th width="84">UKURAN (M2)</th>
+        <th width="52">KPST (TON)</th>
+    </tr>
+      <tr height="17">
+        <td colspan="7">DKI JAKARTA</td>
+      </tr>
+      <tr height="17">
+        <td>General Cargo</td>
+        <td>DEPKES</td>
+        <td>Jl. Rawajati Timur -    Jakarta Selatan</td>
+        <td>2</td>
+        <td>2,625</td>
+        <td>40 X 26 X 6</td>
+        <td>6,562</td>
+      </tr>
+      <tr height="17">    
+        <td>General Cargo</td>
+        <td>DOLOG "A S/D    D"</td>
+        <td>Jl. Perintis    Kemerdekaan - Jakarta Utara</td>
+        <td>6</td>
+        <td>17,133</td>
+        <td>70 X 55 X 6</td>
+        <td>42,833</td>
+      </tr>
+      <tr height="17">    
+        <td colspan="7">CILINCING</td>
+      </tr>
+      <tr height="17">
+        <td>General Cargo</td>
+        <td>PT.    S P S&nbsp;</td>
+        <td>Jl. Raya Cakung -    Cilincing No. 22 - Jakut</td>
+        <td>4</td>
+        <td>6,060</td>
+        <td>55 X 46 X 6</td>
+        <td>15,150</td>
+      </tr>
+      <tr height="17">
+        <td colspan="7">PANCORAN</td>
+      </tr>
+      <tr height="17">   
+        <td>General Cargo</td>
+        <td>PT. SARINAH</td>
+        <td>Jl. Pancoran Timur II    - Jakarta Selatan.</td>
+        <td>4</td>
+        <td>6,730</td>
+        <td>85 X 68 X 6</td>
+        <td>34,638</td>
+      </tr>
+    </table>
+    </div>
+    
+    <!--Cilegon -->
+    <div id="cil" style="display:none">
+    <table width="100%" border="1" cellspacing="0" cellpadding="5">
+    <col width="103"><col width="118"><col width="275">
+    <col width="43"><col width="66"><col width="72"><col width="68">
+    <tr height="17">
+        <th width="89">CABANG / SUB. CABANG</th>
+        <th width="142">NAMA GUDANG</th>
+        <th width="195">ALAMAT GUDANG</th>
+        <th width="41">UNIT (JML)</th>
+        <th width="52">TYPE (M2)</th>
+        <th width="84">UKURAN (M2)</th>
+        <th width="52">KPST (TON)</th>
+    </tr>
+     <tr height="17">
+      <td colspan="7" >CILEGON</td>
+     </tr>
+     <tr height="17">
+      <td >Pupuk Petro</td>
+      <td >PT. PERTANI</td>
+      <td >Jl. Ry rangkas  Bitung</td>
+      <td >1</td>
+      <td >480</td>
+      <td >30 X 16 X 6</td>
+      <td >1,060</td>
+     </tr>
+     <tr height="17">
+      <td >Pupuk Pusri</td>
+      <td >PT. PUSRI</td>
+      <td >Jl. Ry Mauk Km. 8 -  Ngagreg</td>
+      <td >1</td>
+      <td >1,440</td>
+      <td >40 X 30 X 6</td>
+      <td >3,500</td>
+     </tr>
+     <tr height="17">
+      <td >Pupuk Pusri</td>
+      <td >H. ENCUK S</td>
+      <td >Malimping - Lebak</td>
+      <td >1</td>
+      <td >1,104</td>
+      <td >40 X 25 X 6</td>
+      <td >3,000</td>
+     </tr>
+    </table>
+    </div>
+    
+    </td></tr></table>
+</div>
+
+
+    <div id="rightbar">
+      <h2 class="title">Download</h2>
+      <ul>
+        <li><a href="upload/docs/Formulir Pendaftaran Keanggotaan iPASAR (Edwin).pdf">Keanggotaan iPasar</a></li>        
+        <li><a href="upload/docs/Trading Fact Kontrak JAGUNG Feb 2015 Sona.pdf">Trading Fact Kontrak Jagung</a></li>
+        <li><a href="upload/docs/Trading Fact Kontrak KOPI SONA.pdf">Trading Fact Kontrak Kopi</a></li>
+	<li><a href="upload/docs/TRADING FACT GULA JAN 2014.pdf">Trading Fact Kontrak Gula</a></li>
+	<li><a href="upload/docs/TRADING FACT TERPENTIN JAN 2014.pdf">Trading Fact Kontrak Terpentin</a></li>	
+        <li><a href="upload/docs/Trading Fact Kontrak GONDORUKEM Feb 12.pdf">Trading Fact Kontrak Gondorukem</a></li>
+        <li><a href="upload/docs/TRADING FACT KAYU JATI JAN 2014.pdf">Trading Fact Kayu Jati</a></li>
+	<li><a href="upload/docs/TRADING FACT KEDELAI JAN 2014.pdf">Trading Fact Kayu Kedelai</a></li>
+	<li><a href="upload/docs/Trading Fact Kontrak Seaweed 2012.pdf">Trading Fact Rumput Laut</a></li>
+	<li><a href="upload/docs/Brosur iPasar_Update Feb 2015.pdf">Brosur iPasar</a></li>
+        <!--<li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 2.pdf">Spek. Kayu Jati Bundar ex-PPHT 2</a></li>        
+        <li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 3.pdf">Spek. Kayu Jati Bundar ex-PPHT 3</a></li>-->
+      </ul><br />
+      <h2 class="title">Pemberitahuan</h2>
+      <ul>
+
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="footer">
+    <ul>
+      <li><a href="http://www.ipasar.co.id/home.jsp" title="Depan">Depan</a>|</li>
+
+      <li><a href="registration.jsp.html" title="Pendaftaran">Pendaftaran</a>|</li>
+
+      <li><a href="deliveryPoint.jsp.html" title="Gudang Serah ">Gudang Serah </a>|</li>
+      <li><a href="historicalPrice.jsp.html" title="Historical Price / Chart">Historical Price / Chart</a>|</li>
+      <li><a href="faq.jsp.html" title="Pertanyaan">Pertanyaan</a>|</li>
+      <li><a href="about.jsp.html" title="Tentang Kami">Tentang Kami</a>|</li>
+      <li><a href="help.jsp.html" title="Panduan Pengguna">Panduan Pengguna</a></li>
+    </ul>
+    <br />
+    Copyright &copy; 2009 iPasar. <span>All Rights Reserved.</span> </div>
+</div>
+</body>
+</html>

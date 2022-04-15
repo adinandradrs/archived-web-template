@@ -1,0 +1,293 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="keyword" content="pasar, komoditas, fisik, pasar komoditas, pasar komoditas fisik, lelang, auction, pasar komoditas fisik,
+      lelang komoditi, comodity market" />
+<meta name="description" content="Pasar Komoditas Fisik Indonesia" />
+<link REL="SHORTCUT ICON" HREF="images/favicon.ico">
+<title>iPasar </title>
+
+<script type="text/javascript">
+    var mnAbout = 'About Us';
+    var mnFAQ = 'F.A.Q';
+    var mnUserGuide = 'User Guide';
+    var mnTypeKomoditi = 'Commodity Type';
+    var mnGdSerah = 'Warehouse Map';
+    var mnHisPrice = 'Historical Price / Chart';
+
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.marquee.js"></script>
+<script type="text/javascript" src="js/dwrengine.js"></script>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script type="text/javascript">
+    var jq = jQuery.noConflict();
+</script>
+<script type="text/javascript" src="js/dropdownmenu/menucontents.js"></script>
+<script type="text/javascript" src="js/dropdownmenu/anylinkmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="css/anylinkmenu.css" />
+<link rel="stylesheet" type="text/css" href="css/simpletree.css" />
+<link href="css/style-cilantro.css" rel="stylesheet" type="text/css" />
+
+<noscript>
+<meta http-equiv="refresh" content="1; URL='nojscript.jsp.html'">
+</noscript>
+
+<script type="text/javascript">
+	anylinkmenu.init("menuanchorclass");
+</script>
+<script type="text/javascript" src="js/treeview/simpletreemenu.js"></script>
+<script>
+   var serverTime = new Date('Sun Apr 19 2015 00:29:48');
+
+     //var serverTime ;
+    function init()
+    {
+        showServerTime();
+        //dwr.engine.setActiveReverseAjax(true);
+    }
+
+
+    function setInnerHtml(idNya, data) {
+        var getId = document.getElementById(idNya);
+        if (getId != null) {
+            getId.innerHTML = data;
+        }
+    }
+
+
+    function setTime(result)
+    {
+        serverTime = new Date(result);
+        //showServerTime();
+    }
+
+    function showServerTime() {
+        if(!document.all && !document.getElementById) return;
+        var dN =new Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+        mN=new Array('January','February','March','April','May','June','July','August','September','October','November','December');
+        var hours = serverTime.getHours();
+        var minutes = serverTime.getMinutes();
+        var seconds = serverTime.getSeconds();
+        var day=dN[serverTime.getDay()];
+        var month=mN[serverTime.getMonth()];
+        var dat=serverTime.getDate();
+        var year=serverTime.getFullYear();
+
+        serverTime.setSeconds(seconds+1);
+
+        if(hours<=9) {hours = "0" + hours;}
+        if(minutes<=9) {minutes = "0" + minutes;}
+        if(seconds<=9) {seconds = "0" + seconds;}
+
+        ShowTime = day + "," + "&nbsp;" +  month + "&nbsp;" + dat + "," +"&nbsp;" + year + "&nbsp;" +  " - " +hours + ":" + minutes + ":" + seconds +  "&nbsp;" + "GMT+7";
+
+        if(document.getElementById) {
+            document.getElementById("STime").innerHTML = ShowTime;
+        }
+        else if(document.all) {
+            STime.innerHTML = ShowTime;
+        }
+        setTimeout("showServerTime()", 1000);
+    }
+    <!--
+    jq(function () {
+        // basic version is: $('div.demo marquee').marquee() - but we're doing some sexy extras
+        
+        jq('#textmarque marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });
+        
+        jq('#subcontent marquee').marquee('pointer').mouseover(function () {
+            jq(this).trigger('stop');
+        }).mouseout(function () {
+            jq(this).trigger('start');
+        }).mousemove(function (event) {
+            if (jq(this).data('drag') == true) {
+                this.scrollLeft = jq(this).data('scrollX') + (jq(this).data('x') - event.clientX);
+            }
+        }).mousedown(function (event) {
+            jq(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
+        }).mouseup(function () {
+            jq(this).data('drag', false);
+        });        
+    });
+    //-->    
+</script>
+<script language="JavaScript" src="js/timer.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/date.js"></script>
+<script type="text/javascript" src="http://www.ipasar.co.id/js/jQuery/jquery.datePicker.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/datePicker.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.ipasar.co.id/js/jQuery/demo.css">
+</head>
+<body onload="init();">
+<div id="wrapper">
+  <div id="header"><img src="images/header1.jpg" alt="iPasar" width="257" height="94" />
+    <div id="language">
+      <p><span id="STime">Selamat datang</span><br />
+        Select Language : <a href="news.jsp-news_id=75&Bahasa=id_ID.html">Indonesia</a> | <a href="news.jsp-news_id=75&Bahasa=en_US.html">Inggris</a></p>
+<!--        <form name="frmCari" action="" method="post">
+        <table cellpadding="0" cellspacing="2" border="0">
+          <tr>
+            <td width="120">&nbsp;</td>
+            <td><input name="keyword" type="text" class="txt" value="Search" /></td>
+            <td><input type="image" src="images/btnsearch.jpg" alt="Search" /></td>
+          </tr>
+        </table>
+      </form> -->
+    </div>
+    <img src="images/header2.jpg" alt="Komoditi Mandiri" width="311" height="94" /><br class="clear" />
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.html" title="Home">Home</a></li>
+      <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#" title="Auction Buy" class="menuanchorclass" rel="anylinkmenu2">Insertion</a></li>
+      <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#" title="Sell Catalog" class="menuanchorclass" rel="anylinkmenu6">KATALOG JUAL</a></li>
+      <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#" title="Buy Catalog" class="menuanchorclass" rel="anylinkmenu7">KATALOG BELI</a></li>
+      <li><a href="registration.jsp.html" title="Register">Register</a></li>
+      <li><a href="newsArchieve.jsp.html" title="News & Data " class="menuanchorclass" rel="anylinkmenu4">News & Data </a></li>
+      <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#" title="Login" class="menuanchorclass" rel="anylinkmenu5">Login</a></li>
+      <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#" class="menuanchorclass" rel="anylinkmenu3" title="Help" class="menuanchorclass" rel="anylinkmenu3">Help</a></li>
+    </ul>
+  </div>
+  <div id="textmarque">
+    <marquee behavior="scroll" direction="left" scrollamount="2">
+    
+                <a class="up">JAGPILJI&nbsp;3,350&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;350</a>&nbsp;&nbsp;
+                
+                <a class="up">GUMROSINPPHT3&nbsp;2,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;305</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSN&nbsp;3,250&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;150</a>&nbsp;&nbsp;
+                
+                <a class="down">JAGPILJB&nbsp;3,350&nbsp;<img src="images/down.gif" alt="Down" width="17" height="11" />&nbsp;(150)</a>&nbsp;&nbsp;
+                
+                <a class="up">JAGPILSU&nbsp;3,500&nbsp;<img src="images/up.gif" alt="Down" width="17" height="11" />&nbsp;50</a>&nbsp;&nbsp;
+                
+                <a class="stabil">KEDELAIAJB&nbsp;9,000&nbsp;<img src="images/stabil.gif" alt="Down" width="17" height="11" />&nbsp;0</a>&nbsp;&nbsp;
+                
+    </marquee>
+  </div>
+  <div id="subcontent">
+    <marquee behavior="scroll" direction="left" scrollamount="1">
+    iPasar - Mitra Kesejahteraan dan Kemakmuran Bangsa&nbsp;&nbsp;
+    
+    </marquee>
+  </div>
+  <div id="content">
+    <div id="leftbar">
+      <h2 class="title">Items Category</h2>
+      <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td><ul id="treemenu1" class="treeview">
+                <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#">Komoditi Pertanian</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=8">Jagung Pipilan</a></li>
+                        <li><a href="catalogs.jsp?catId=17">Kedelai</a></li>
+                        <li><a href="catalogs.jsp?catId=18">Benih Kedelai</a></li>
+                    </ul>
+                </li>
+                <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#">Komoditi Kehutanan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=10">Kayu</a></li>
+                        <li><a href="catalogs.jsp?catId=13">Gum Rosin</a></li>
+                        <li><a href="catalogs.jsp?catId=14">Turpentine</a></li>
+                    </ul>
+                </li>
+                <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#">Komoditi Kelautan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=11">Cottonii</a></li>
+                    </ul>
+                </li>
+                <li><a href="news.jsp-news_id=75&Bahasa=en_US.html#">Komoditi Perkebunan</a>
+                    <ul>
+                        <li><a href="catalogs.jsp?catId=12">Kopi Arabika</a></li>
+                        <li><a href="catalogs.jsp?catId=15">Gula Kristal Putih</a></li>
+			   <li><a href="catalogs.jsp?catId=16">Karet Bokor</a></li>
+                    </ul>
+                </li>                
+            </ul>
+            <script type="text/javascript">
+		ddtreemenu.createTree("treemenu1", true, 5)
+            </script>
+            <br />
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+<div id="isi">
+      <h2 class="title">News</h2>
+
+            <b>Produksi Terbatas, Harga Kopi Dunia Justru Turun  </b><br />
+            <span style="color:#666666;font-size:11px;font-style:italic">Dibuat pada: 2013-02-12</span>
+            <br /><br />
+            <span style="font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;"><font color="#111111">Para eksportir kopi tengah mengantisipasi penurunan harga kopi di tingkat dunia. Asosiasi Eksportir Kopi Indonesia (AEKI) menyatakan,&nbsp;</font><a href="http://www.tempo.co/read/news/2012/12/08/121446731/Ini-Sebab-Kopi-Gajah-Lebih-Mahal-daripada-Kopi-Luwak" target="_blank" style="text-decoration: initial;"><font color="#000000">harga </font></a><a href="http://www.tempo.co/read/news/2012/12/08/121446731/Ini-Sebab-Kopi-Gajah-Lebih-Mahal-daripada-Kopi-Luwak" target="_blank" style="text-decoration: initial;"><font color="#000000">kopi sudah memasuki yang terendah sejak beberapa tahun lalu.</font></a></span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Ketua Kompartemen Specialty Kopi dan Industri Kopi AEKI, Pranoto Soenarto, mengatakan, harga kopi masih sulit membaik akibat permainan harga dari pemilik modal. "Zaman sekarang bukan faktor<em>supply vs demand,</em>&nbsp;tapi&nbsp;<em>fund manager</em>&nbsp;yang&nbsp;<em>play the game</em>. Naik turun sangat tipis, harga sangat prihatin," kata Pranoto kepada&nbsp;<em>Tempo</em>, Selasa, 12 Februari 2013.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Harga rata-rata kopi arabika di NYBOT-ICE tadi malam turun 0,90 sen menjadi US$ 140,15 sen per pon. Sedangkan pada London Financial Futures and Option Exchange (LIFFE), harga kopi robusta turun US$ 45 menjadi US$ 2.078 per metrik ton.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Meskipun demikian, asosiasi masih berharap harga kopi bisa naik kembali pada semester kedua tahun ini di kisaran US$ 180 sen per pon untuk arabika dan US$ 2.200 per ton untuk kopi robusta. "Supaya harga cukup sehat, untuk produsen<em>happy</em>, konsumen oke," ujarnya.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Untuk bisa mendongkrak harga kopi, menurut dia, diperlukan dukungan dari pemerintah berupa perbaikan produktivitas tanaman kopi. Ini bisa dilakukan agar volume kopi yang diproduksi terus meningkat sehingga harga tidak terpengaruh.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Pranoto menyayangkan produksi kopi nasional setiap tahunnya hanya berkisar 600-720 ribu ton. Produktivitas tanaman kopi juga dinilai perlu digenjot untuk mampu bersaing dengan negara produsen kopi lainnya seperti Brasil. Produktivitas tanaman kopi Indonesia hanya 600-700 kilogram per hektare. "Harusnya produktivitas di atas 1 ton per hektare," katanya.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Indonesia merupakan pengekspor kopi terbesar nomor tiga di dunia setelah Brasil dan Vietnam. Sekitar 75 persen produksi kopi nasional berupa jenis robusta, dan 25 persen jenis arabika.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Brasil mampu memproduksi 3 juta ton kopi di mana 70 persennya adalah jenis arabika. Produsen terbesar kedua adalah Vietnam dengan volume 1,3 juta ton di mana 80 persennya berjenis robusta. "Sekarang Brasil sedang mengejar produksi kopi robusta karena permintaan dunia makin tinggi."&nbsp;</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Ia juga berharap nilai ekspor kopi tahun ini bisa meningkat dari US$ 1,2 miliar tahun lalu menjadi US$ 1,4 miliar. Indonesia mengekspor kopi arabika terbesar ke Amerika dan kopi robusta diekspor ke Eropa dan Jepang.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="font-family: Arial, Helvetica, sans-serif; line-height: 22px; font-size: small;"><span style="background-color: rgb(255, 255, 255);"><a href="http://www.tempo.co/read/news/2012/11/08/090440595/Pemerintah-Diminta-Serius-Bantu-Kopi-Rakyat" target="_blank" style="text-decoration: initial;"><font color="#000000">Kementerian Pertanian menargetkan</font></a><font color="#111111">&nbsp;produksi kopi tahun ini mencapai 763.000 ton atau naik 16,11 persen dibanding tahun lalu. Tahun lalu, realisasi produksi kopi sebesar 657.138 ton.</font></span></span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Wakil Menteri Pertanian Rusman Heriawan mengatakan, untuk menaikkan produksi kopi, Kementerian Pertanian melakukan sejumlah cara. Salah satunya adalah mempercepat perluasan areal tanam dan peremajaan tanaman. Selain menaikkan produksi kopi, ke depan pemerintah akan meningkatkan ekspor produk olahan kopi.&nbsp;</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">"Sehingga ekspor kopi tidak dilakukan dalam bentuk mentah, melainkan barang jadi, sehingga memiliki nilai tambah. Ini tantangan sekaligus peluang bagi Indonesia bagaimana mengekspor kopi olahan yang mempunyai nilai tambah tinggi," kata Rusman.</span><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><br style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);"><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">Di Indonesia, kebutuhan kopi diperkirakan mencapai 121.107 ton per tahun. Luas area perkebunan kopi di Indonesia mencapai 1,3 juta hektare, di</span><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255);">&nbsp;</span><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;">antaranya tersebar di Aceh, Sumatera Utara, Lampung, Jawa Barat, Jawa Tengah, Bali, Nusa Tenggara Timur, Sulawesi Selatan, hingga Papua.</span><div><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;"><br></span></div><div><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;"><br></span></div><div><span style="color: rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif; line-height: 22px; background-color: rgb(255, 255, 255); font-size: small;"><a href="http://www.tempo.co/read/news/2013/02/12/090460716/Produksi-Terbatas-Harga-Kopi-Dunia-Justru-Turun">Sumber</a></span></div>
+         
+                <br /><br />
+                <a href="newsArchieve.jsp.html">Kembali ke arsip berita</a>        
+</div>
+
+
+    <div id="rightbar">
+      <h2 class="title">Download</h2>
+      <ul>
+        <li><a href="upload/docs/Formulir Pendaftaran Keanggotaan iPASAR (Edwin).pdf">Keanggotaan iPasar</a></li>        
+        <li><a href="upload/docs/Trading Fact Kontrak JAGUNG Feb 2015 Sona.pdf">Trading Fact Kontrak Jagung</a></li>
+        <li><a href="upload/docs/Trading Fact Kontrak KOPI SONA.pdf">Trading Fact Kontrak Kopi</a></li>
+	<li><a href="upload/docs/TRADING FACT GULA JAN 2014.pdf">Trading Fact Kontrak Gula</a></li>
+	<li><a href="upload/docs/TRADING FACT TERPENTIN JAN 2014.pdf">Trading Fact Kontrak Terpentin</a></li>	
+        <li><a href="upload/docs/Trading Fact Kontrak GONDORUKEM Feb 12.pdf">Trading Fact Kontrak Gondorukem</a></li>
+        <li><a href="upload/docs/TRADING FACT KAYU JATI JAN 2014.pdf">Trading Fact Kayu Jati</a></li>
+	<li><a href="upload/docs/TRADING FACT KEDELAI JAN 2014.pdf">Trading Fact Kayu Kedelai</a></li>
+	<li><a href="upload/docs/Trading Fact Kontrak Seaweed 2012.pdf">Trading Fact Rumput Laut</a></li>
+	<li><a href="upload/docs/Brosur iPasar_Update Feb 2015.pdf">Brosur iPasar</a></li>
+        <!--<li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 2.pdf">Spek. Kayu Jati Bundar ex-PPHT 2</a></li>        
+        <li><a href="upload/docs/Spek. Kayu Jati Bundar ex-PPHT 3.pdf">Spek. Kayu Jati Bundar ex-PPHT 3</a></li>-->
+      </ul><br />
+      <h2 class="title">Pemberitahuan</h2>
+      <ul>
+
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="footer">
+    <ul>
+      <li><a href="http://www.ipasar.co.id/home.jsp" title="Home">Home</a>|</li>
+
+      <li><a href="registration.jsp.html" title="Register">Register</a>|</li>
+
+      <li><a href="deliveryPoint.jsp.html" title="Warehouse Map">Warehouse Map</a>|</li>
+      <li><a href="historicalPrice.jsp.html" title="Historical Price / Chart">Historical Price / Chart</a>|</li>
+      <li><a href="faq.jsp.html" title="F.A.Q">F.A.Q</a>|</li>
+      <li><a href="about.jsp.html" title="About Us">About Us</a>|</li>
+      <li><a href="help.jsp.html" title="User Guide">User Guide</a></li>
+    </ul>
+    <br />
+    Copyright &copy; 2009 iPasar. <span>All Rights Reserved.</span> </div>
+</div>
+</body>
+</html>
